@@ -81,7 +81,7 @@
     }
 
     .focal-point {
-      background: var(--background-rgb);
+      background-image: var(--background-rgb);
       background-size: 500% 500%;
       border-radius: 50%;
       filter: blur(120px);
