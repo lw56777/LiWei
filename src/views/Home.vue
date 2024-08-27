@@ -69,7 +69,6 @@ import Rainbow from '@/components/Rainbow/index.vue';
 <style scoped lang="scss">
 .home {
   .info-box {
-    overflow: hidden;
     margin: auto;
 
     .title {
