@@ -27,10 +27,20 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .background {
-  z-index: -1;
-  
-  canvas {
-    opacity: .75;
+  z-index: -999;
+
+  .fade-out {
+    animation: fadeOut 3s linear forwards;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
   }
 }
 </style>

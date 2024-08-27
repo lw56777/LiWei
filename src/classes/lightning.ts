@@ -93,7 +93,7 @@ export class CLightning {
 
     this.ctx.beginPath();
     this.ctx.lineWidth = 1;
-    this.ctx.strokeStyle = 'rgba(136, 136, 136, 0.145)';
+    this.ctx.strokeStyle = 'rgba(136, 136, 136, 0.25)';
     this.ctx.moveTo(x, y);
     this.ctx.lineTo(endPos[0], endPos[1]);
     this.ctx.stroke();
@@ -151,11 +151,13 @@ export class CLightning {
 
   reset () {
     this.isReseting = true;
+    this.canvas.classList.add('fade-out');
     const timer = setTimeout(() => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.createRoots();
       this.isStop = false;
       this.isReseting = false;
+      this.canvas.classList.remove('fade-out');
       clearTimeout(timer);
     }, 3000);
   }

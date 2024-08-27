@@ -1,15 +1,13 @@
 :root {
-  --background-rgb: linear-gradient(
-    120deg,
-    #ff0000,
-    #fc00ff,
-    #6600ff,
-    #0600ff,
-    #00fffc,
-    #00ff1e,
-    #fffc00,
-    #ff5a00,
-    #ff0000
+  --rainbow-color: linear-gradient(
+    45deg,
+    #FF0000,
+    #FFA500,
+    #FFFF00,
+    #008000,
+    #00FFFF,
+    #0000FF,
+    #800080
   );
 }
 

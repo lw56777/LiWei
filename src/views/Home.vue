@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Rainbow from '@/components/Rainbow/index.vue';
 </script>
 
 <template>
@@ -7,7 +8,18 @@
       class="info-box"
       max-w-200
       min-h-125
+      pos-relative
     >
+      <div
+        class="title"
+        font-size-8
+        font-700
+        text-center
+        mb-2
+      >
+        Hello Word!
+      </div>
+
       <section>
         <el-descriptions
           title="个人信息"
@@ -20,17 +32,16 @@
             label="邮箱"
             :span="2"
           >
-            liwei15058665004@163.com
+            535847787@qq.com
           </el-descriptions-item>
           <el-descriptions-item
             label="电话"
             :span="2"
           >
-            15058665004
+            12345678910
           </el-descriptions-item>
         </el-descriptions>
       </section>
-      ...
 
       <!-- <section>
         <el-descriptions
@@ -50,13 +61,7 @@
         ...
       </section> -->
 
-      <div
-        class="focal-point"
-        w-50
-        h-50
-        pos-absolute
-        opacity-50
-      ></div>
+      <Rainbow />
     </div>
   </div>
 </template>
@@ -64,50 +69,19 @@
 <style scoped lang="scss">
 .home {
   .info-box {
+    overflow: hidden;
     margin: auto;
-    position: relative;
-    
-    section {
-      margin-top: 5rem;
-    }
 
     .title {
-      background: var(--background-rgb);
+      background: var(--rainbow-color);
       background-size: 200% 200%;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: bg 30s ease infinite forwards;
-      transition: all .3s;
+      animation: rainbow 30s ease infinite;
     }
 
-    .focal-point {
-      background-image: var(--background-rgb);
-      background-size: 500% 500%;
-      border-radius: 50%;
-      filter: blur(120px);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      transition: all .3s;
-      animation: radialGradient 30s ease infinite forwards;
-    }
-
-    @keyframes radialGradient {
-      0% {
-        background-position: 0% 0%;
-      }
-      25% {
-        background-position: 50% 50%;
-      }
-      50% {
-        background-position: 100% 100%;
-      }
-      75% {
-        background-position: 50% 50%;
-      }
-      100% {
-        background-position: 0% 0%;
-      }
+    section {
+      margin-bottom: 2rem;
     }
   }
 }
