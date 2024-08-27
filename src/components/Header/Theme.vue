@@ -2,7 +2,9 @@
 import { useDark } from '@vueuse/core';
 import {
   Moon,
-  Sunny
+  Sunny,
+  Sunrise,
+  MoonNight
 } from '@element-plus/icons-vue';
 
 const value = useDark();
@@ -13,7 +15,7 @@ const value = useDark();
     v-model="value"
     style="--el-switch-on-color: #2c2c2c;"
     inline-prompt
-    :active-icon="Moon"
-    :inactive-icon="Sunny"
+    :active-icon="MoonNight"
+    :inactive-icon="Sunrise"
   />
 </template>

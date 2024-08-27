@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+import { Opportunity } from '@element-plus/icons-vue';
 // import Signature from './Signature.vue';
 import Theme from './Theme.vue';
+import Setting from './Setting.vue';
+
+const router = useRouter();
 </script>
 
 <template>
@@ -26,7 +31,17 @@ import Theme from './Theme.vue';
       justify-end
     >
       <li>
+        <el-icon @click="router.push('Playground')">
+          <Opportunity />
+        </el-icon>
+      </li>
+
+      <li>
         <Theme />
+      </li>
+
+      <li>
+        <Setting />
       </li>
     </ul>
   </div>
@@ -36,6 +51,7 @@ import Theme from './Theme.vue';
 .header {
   .menu {
     li {
+      cursor: pointer;
       padding: 0 .5rem;
     }
   }

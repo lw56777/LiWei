@@ -76,7 +76,7 @@ import Rainbow from '@/components/Rainbow/index.vue';
       background-size: 200% 200%;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: rainbow 30s ease infinite;
+      animation: rainbow 20s ease infinite;
     }
 
     section {

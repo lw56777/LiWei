@@ -1,8 +1,8 @@
 import { getRandomInt } from '@/utils/tools';
 import { ILightningRoot } from '@/interfaces/lightning';
 
-const MIN_COUNT = 30;
-const MAX_COUNT = 3000;
+const MIN_COUNT = 20;
+const MAX_COUNT = 2000;
 
 class CLightningRoot implements ILightningRoot {
   startPos: number[] = [];
@@ -137,7 +137,7 @@ export class CLightning {
     requestAnimationFrame(() => {
       this.fps++;
 
-      if (this.fps % 5 === 0 && !this.isStop) {
+      if (this.fps % 3 === 0 && !this.isStop) {
         this.isStop = this.getAnimations();
       }
 

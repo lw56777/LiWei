@@ -66,7 +66,7 @@
 
 .rainbow {
   background-image: var(--rainbow-color);
-  background-size: 200% 200%;
+  background-size: 500% 500%;
   filter: blur(120px);
   border-radius: 50%;
   top: 50%;
