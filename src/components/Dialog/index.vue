@@ -14,7 +14,10 @@ defineExpose({
 </script>
 
 <template>
-  <el-dialog v-model="dialog.visible">
+  <el-dialog
+    v-model="dialog.visible"
+    v-bind="dialog.options"
+  >
     <Component
       v-if="dialog.isComponent"
       :is="toRaw(dialog.content)"
@@ -35,3 +38,11 @@ defineExpose({
     </template>
   </el-dialog>
 </template>
+
+<style lang="scss">
+@media (max-width: 768px) {
+  .el-dialog {
+    width: 100%;
+  }
+}
+</style>

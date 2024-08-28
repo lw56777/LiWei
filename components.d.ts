@@ -7,6 +7,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    A: typeof import('./src/components/Background/A.vue')['default']
+    Astral: typeof import('./src/components/Background/Astral.vue')['default']
     Background: typeof import('./src/components/Background/index.vue')['default']
     ComponentMode: typeof import('./src/components/Draggable/ComponentMode.vue')['default']
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
@@ -20,13 +22,16 @@ declare module 'vue' {
     ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDivider: typeof import('element-plus/es')['ElDivider']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElImage: typeof import('element-plus/es')['ElImage']
     ElMain: typeof import('element-plus/es')['ElMain']
+    ElOption: typeof import('element-plus/es')['ElOption']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSegmented: typeof import('element-plus/es')['ElSegmented']
+    ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSpace: typeof import('element-plus/es')['ElSpace']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTag: typeof import('element-plus/es')['ElTag']
@@ -40,6 +45,7 @@ declare module 'vue' {
     Signature: typeof import('./src/components/Header/Signature.vue')['default']
     Starport: typeof import('vue-starport')['Starport']
     StarportCarrier: typeof import('vue-starport')['StarportCarrier']
+    StreetLamp: typeof import('./src/components/Background/StreetLamp.vue')['default']
     Test1: typeof import('./src/components/Dialog/Test1.vue')['default']
     Test2: typeof import('./src/components/Dialog/Test2.vue')['default']
     Text: typeof import('./src/components/Dialog/Text.vue')['default']

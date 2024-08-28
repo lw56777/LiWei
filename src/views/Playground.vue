@@ -1,12 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import {
+  useRouter,
+  useRoute,
+  RouteRecordRaw
+} from 'vue-router';
+import { arrayToStrategy } from '@/utils/tools';
 
 const router = useRouter();
-const routes = router.getRoutes().find(route => route.name === 'Playground')?.children.map(route => route.name);
-const segmentedValue = ref('');
+const route = useRoute();
+const { children } = router.getRoutes().find(route => route.name === 'Playground')!;
+const strategy = arrayToStrategy(
+  children,
+  (route: RouteRecordRaw) => {
+    return route.meta!.title;
+  },
+  'name'
+);
+const options = Object.keys(strategy);
+const segmentedValue = ref(route.meta.title);
 const segmentedChange = (value: string) => {
-  router.push({ name: value });
+  router.push({ name: strategy[value] });
 }
 </script>
 
@@ -14,7 +28,8 @@ const segmentedChange = (value: string) => {
   <div class="playground">
     <el-segmented
       v-model="segmentedValue"
-      :options="routes"
+      size="large"
+      :options="options"
       @change="segmentedChange"
     />
 

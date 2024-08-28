@@ -71,12 +71,16 @@ import Rainbow from '@/components/Rainbow/index.vue';
   .info-box {
     margin: auto;
 
+    // @include resLayout ($PHONE) {
+    //   width: 100%;
+    // }
+
     .title {
-      background: var(--rainbow-color);
+      background: var(--rainbow-bg);
       background-size: 200% 200%;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: rainbow 20s ease infinite;
+      animation: rainbowBg 30s infinite;
     }
 
     section {

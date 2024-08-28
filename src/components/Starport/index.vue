@@ -16,6 +16,6 @@ defineProps({
 
 <style scoped lang="scss">
 .el-image {
-  transition: all .5s ease;
+  transition: all 1s ease;
 }
 </style>

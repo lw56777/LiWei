@@ -4,18 +4,19 @@ import { Starport } from 'vue-starport';
 import StarPort from '@/components/Starport/index.vue';
 
 const value = ref({
-  class: 'w-50',
+  class: 'w-20',
   style: {
-    transform: 'translate3d(0, 0, 0)'
+    transform: 'scaleX(1) scale(0.5) translate(100vw, 80vh)'
   }
 });
 </script>
 
 <template>
   <div
-    class="starship"
+    class="landing"
     pos-relative
   >
+    <el-divider>页面2-落点</el-divider>
     <Starport
       port="testId"
       keep-alive

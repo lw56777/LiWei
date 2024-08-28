@@ -2,6 +2,11 @@ export default class CDialog {
   visible = false;
   content: any = '';
   isComponent = false;
+  options = {};
+
+  constructor (options = {}) {
+    this.options = options;
+  }
 
   private setVisible (visible: boolean) {
     this.visible = visible;

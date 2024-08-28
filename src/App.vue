@@ -3,14 +3,13 @@ import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import Header from '@/components/Header/index.vue';
 import Background from '@/components/Background/index.vue';
-
 </script>
 
 <template>
   <ElConfigProvider :locale="zhCn">
     <el-scrollbar height="100vh">
       <el-container>
-        <el-header>
+        <el-header z-1>
           <Header />
         </el-header>
 

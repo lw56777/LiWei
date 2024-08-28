@@ -20,6 +20,7 @@ class CLightningRoot implements ILightningRoot {
 export class CLightning {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasRenderingContext2D;
+  private effectColor: string = '';
   private points: number[][] = [];
   private roots: CLightningRoot[] = [];
   private animations: Function[] = [];
@@ -27,11 +28,12 @@ export class CLightning {
   private isStop: boolean = false;
   private isReseting: boolean = false;
 
-  constructor (canvas: HTMLCanvasElement) {
+  constructor (canvas: HTMLCanvasElement, effectColor: string) {
     this.canvas = canvas;
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.ctx = canvas.getContext('2d')!;
+    this.effectColor = effectColor;
     this.createPoints();
     this.createRoots();
   }
@@ -93,7 +95,7 @@ export class CLightning {
 
     this.ctx.beginPath();
     this.ctx.lineWidth = 1;
-    this.ctx.strokeStyle = 'rgba(136, 136, 136, 0.25)';
+    this.ctx.strokeStyle = this.effectColor;
     this.ctx.moveTo(x, y);
     this.ctx.lineTo(endPos[0], endPos[1]);
     this.ctx.stroke();

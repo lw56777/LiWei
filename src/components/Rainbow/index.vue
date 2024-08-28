@@ -1,10 +1,10 @@
 <template>
   <div
     class="rainbow"
-    pos-absolute
+    pos-fixed
     w-50
     h-50
-    opacity-50
+    opacity-70
   ></div>
 </template>
 
@@ -55,24 +55,24 @@
 
 // .rainbow {
 //   @include rainbow-gradient();
-//   background-image: linear-gradient(var(--from-color), var(--to-color));
+//   background-image: linear-gradient(45deg, var(--from-color) 30%, var(--to-color));
 //   border-radius: 50%;
 //   filter: blur(120px);
 //   top: 50%;
 //   left: 50%;
 //   transform: translate(-50%, -50%);
-//   animation: rainbow 30s infinite;
+//   animation: rainbow 20s infinite;
 // }
 
 .rainbow {
-  background-image: var(--rainbow-color);
+  background-image: var(--rainbow-bg);
   background-size: 500% 500%;
   filter: blur(120px);
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: rainbow 30s ease infinite;
-  z-index: -99;
+  animation: rainbowBg 30s infinite;
+  // z-index: -100;
 }
 </style>

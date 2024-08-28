@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useDraggable, type UseDraggableReturn } from 'vue-draggable-plus';
+import { useDraggable } from 'vue-draggable-plus';
 
 const el = ref();
 const list = ref([
@@ -38,14 +38,8 @@ const list = ref([
   }
 ]);
 
-useDraggable<UseDraggableReturn>(el, list, {
-  animation: 150,
-  onStart() {
-    console.log('start');
-  },
-  onUpdate() {
-    console.log('update');
-  }
+useDraggable(el, list, {
+  animation: 150
 });
 </script>
 

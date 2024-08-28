@@ -2,8 +2,9 @@
 import { useRouter } from 'vue-router';
 import { Opportunity } from '@element-plus/icons-vue';
 // import Signature from './Signature.vue';
-import Theme from './Theme.vue';
 import Setting from './Setting.vue';
+import Theme from './Theme.vue';
+import avatar from '@/assets/avatar.jpg';
 
 const router = useRouter();
 </script>
@@ -20,7 +21,9 @@ const router = useRouter();
       <!-- <Signature /> -->
       <el-avatar
         :size="30"
-        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+        :src="avatar"
+        cursor-pointer
+        @click="router.push({ name: 'Home' })"
       />
     </div>
 
@@ -31,7 +34,7 @@ const router = useRouter();
       justify-end
     >
       <li>
-        <el-icon @click="router.push('Playground')">
+        <el-icon @click="router.push({ name: 'Playground' })">
           <Opportunity />
         </el-icon>
       </li>
