@@ -7,7 +7,6 @@ const _skills = shuffleArray(skills);
 
 <template>
   <div
-    ref
     class="skill"
     flex
     flex-wrap
