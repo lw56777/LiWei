@@ -9,7 +9,7 @@ import { useStorage } from '@vueuse/core';
 import { getLocalStorage } from '@/utils/tools';
 import { CLightning } from '@/classes/lightning';
 import Astral from './Astral.vue';
-import StreetLamp from './StreetLamp.vue';
+// import StreetLamp from './StreetLamp.vue';
 
 const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue'));
 
