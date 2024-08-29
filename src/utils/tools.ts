@@ -24,3 +24,13 @@ export function arrayToStrategy (arr: any[], labelKey: string | Function, valueK
 
   return strategy;
 }
+
+// Fisher-Yates 洗牌算法
+export function shuffleArray (arr: any[]) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]]; // 交换元素
+  }
+  
+  return arr;
+}

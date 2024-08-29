@@ -1,8 +1,35 @@
 <script setup lang="ts">
 import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import { loadOml2d } from 'oh-my-live2d';
 import Header from '@/components/Header/index.vue';
 import Background from '@/components/Background/index.vue';
+
+loadOml2d({
+  dockedPosition: 'right',
+  mobileDisplay: true,
+  models: [
+    {
+      path: 'https://model.oml2d.com/cat-black/model.json',
+      scale: 0.06,
+      mobileScale: 0.05
+    }
+  ],
+  menus: {
+    disable: true
+  },
+  statusBar: {
+    disable: true
+  },
+  tips: {
+    style: {
+      display: 'none'
+    },
+    mobileStyle: {
+      display: 'none'
+    }
+  }
+});
 </script>
 
 <template>
@@ -16,8 +43,7 @@ import Background from '@/components/Background/index.vue';
         <el-main>
           <RouterView v-slot="{ Component }">
             <Transition
-              name="fade"
-              mode="out-in"
+              name="el-fade-in"
             >
               <KeepAlive>
                 <Component :is="Component" />

@@ -43,6 +43,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     Setting: typeof import('./src/components/Header/Setting.vue')['default']
     Signature: typeof import('./src/components/Header/Signature.vue')['default']
+    Skill: typeof import('./src/components/Skill/index.vue')['default']
     Starport: typeof import('vue-starport')['Starport']
     StarportCarrier: typeof import('vue-starport')['StarportCarrier']
     StreetLamp: typeof import('./src/components/Background/StreetLamp.vue')['default']
