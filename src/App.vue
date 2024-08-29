@@ -41,4 +41,11 @@ import Background from '@/components/Background/index.vue';
 .el-main {
   min-height: calc(100vh - 60px);
 }
+
+@media (max-width: 768px) {
+  .el-header,
+  .el-main {
+    padding: .5rem;
+  }
+}
 </style>

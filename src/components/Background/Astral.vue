@@ -18,8 +18,8 @@
 }
 
 .astral {
-  $sizes: 5px, 2px, 1px;
-  $counts: 15, 100, 200;
+  $sizes: 3px, 2px, 1px;
+  $counts: 10, 100, 200;
   @for $i from 1 through 3 {
     .layer#{$i} {
       $size: nth($sizes, $i);

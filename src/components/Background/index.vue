@@ -58,7 +58,7 @@ watch(bgEffectValue, () => {
 
     <Astral v-if="bgEffectValue == 2" />
 
-    <StreetLamp />
+    <!-- <StreetLamp /> -->
   </div>
 </template>
 
