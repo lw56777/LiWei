@@ -1,12 +1,39 @@
 <script setup lang="ts">
-import { shuffleArray } from '@/utils/tools';
+import { inject } from 'vue';
+import { Oml2dMethods } from 'oh-my-live2d';
+import {
+  getRandomInt,
+  shuffleArray
+} from '@/utils/tools';
 import skills from '@/utils/skills';
 
+const oml2d: Oml2dMethods = inject('oml2d')!;
 const _skills = shuffleArray(skills);
+
+const computeStyle = () => {
+  const size = getRandomInt(3, 5);
+  const x = getRandomInt(0, 20);
+  const y = getRandomInt(0, 20);
+  const speed = getRandomInt(5, 10);
+
+  return {
+    width: `${ size }rem`,
+    height: `${ size }rem`,
+    transform: `translate(${ x }px, ${ y }px)`,
+    animation: `twinkleFloat ${ speed }s infinite alternate`
+  }
+}
+
+const setTipsMessage = (dataIndex: number) => {
+  const { message } = _skills[dataIndex];
+  if (!message) return;
+  oml2d.tipsMessage(message, 3000, 1);
+}
 </script>
 
 <template>
   <div
+    ref="skillsRef"
     class="skill"
     flex
     flex-wrap
@@ -14,11 +41,13 @@ const _skills = shuffleArray(skills);
   >
     <svg
       v-for="skill, index of _skills"
-      :key="index"
-      :class="['skill-svg', `skill-svg-${ index + 1 }`]"
-      aria-hidden="true"
+      :key="skill.name"
+      class="skill-svg"
+      :style="computeStyle()"
       rounded-lg
       p-1
+      aria-hidden="true"
+      @click="setTipsMessage(index)"
     >
       <use :xlink:href="`#icon-${ skill.name }`"></use>
     </svg>
@@ -33,47 +62,6 @@ const _skills = shuffleArray(skills);
     fill: currentColor;
     overflow: hidden;
     animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
-  }
-}
-
-@for $i from 1 through 17 {
-  .skill-svg#{-$i} {
-    $size: random(5);
-    $x: random(20);
-    $y: random(20);
-    $speed: random(30);
-    width: #{max(3, $size)}rem;
-    height: #{max(3, $size)}rem;
-    transform: translate(#{$x}px, #{$y}px);
-    animation: float #{max(5, $speed)}s infinite ease-in-out alternate, twinkle #{max(5, $speed)}s ease infinite;
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes twinkle {
-  0% {
-    opacity: .3;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: .3;
   }
 }
 

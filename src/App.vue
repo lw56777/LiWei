@@ -1,11 +1,20 @@
 <script setup lang="ts">
+import { provide } from 'vue';
 import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import { loadOml2d } from 'oh-my-live2d';
 import Header from '@/components/Header/index.vue';
 import Background from '@/components/Background/index.vue';
 
-loadOml2d({
+const tipsStyle = {
+  // display: 'none',
+  width: '100%',
+  minHeight: 'auto',
+  fontSize: '12px',
+  top: '-50%'
+}
+
+const oml2d = loadOml2d({
   dockedPosition: 'right',
   mobileDisplay: true,
   models: [
@@ -22,14 +31,15 @@ loadOml2d({
     disable: true
   },
   tips: {
-    style: {
-      display: 'none'
-    },
-    mobileStyle: {
-      display: 'none'
+    style: tipsStyle,
+    mobileStyle: tipsStyle,
+    welcomeTips: {
+      duration: 0
     }
   }
 });
+
+provide('oml2d', oml2d);
 </script>
 
 <template>
