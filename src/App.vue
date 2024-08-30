@@ -34,7 +34,7 @@ const oml2d = loadOml2d({
     style: tipsStyle,
     mobileStyle: tipsStyle,
     welcomeTips: {
-      duration: 0
+      duration: 3000
     }
   }
 });
