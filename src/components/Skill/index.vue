@@ -14,7 +14,7 @@ const computeStyle = () => {
   const size = getRandomInt(3, 5);
   const x = getRandomInt(0, 20);
   const y = getRandomInt(0, 20);
-  const speed = getRandomInt(5, 10);
+  const speed = getRandomInt(10, 15);
 
   return {
     width: `${ size }rem`,
