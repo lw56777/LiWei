@@ -78,6 +78,10 @@ const skills = [
   {
     name: 'ECharts',
     message: '图表可视化'
+  },
+  {
+    name: 'git',
+    message: '版本控制'
   }
 ];
 

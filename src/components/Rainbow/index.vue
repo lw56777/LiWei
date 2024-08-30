@@ -4,7 +4,7 @@
     pos-fixed
     w-50
     h-50
-    opacity-70
+    opacity-75
   ></div>
 </template>
 

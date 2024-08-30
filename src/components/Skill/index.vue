@@ -12,9 +12,9 @@ const _skills = shuffleArray(skills);
 
 const computeStyle = () => {
   const size = getRandomInt(3, 5);
-  const x = getRandomInt(0, 20);
+  const x = getRandomInt(-10, 10);
   const y = getRandomInt(0, 20);
-  const speed = getRandomInt(5, 10);
+  const speed = getRandomInt(6, 9);
 
   return {
     width: `${ size }rem`,
@@ -37,6 +37,7 @@ const setTipsMessage = (dataIndex: number) => {
     class="skill"
     flex
     flex-wrap
+    justify-center
     gap-10
   >
     <svg
@@ -45,6 +46,7 @@ const setTipsMessage = (dataIndex: number) => {
       class="skill-svg"
       :style="computeStyle()"
       rounded-lg
+      cursor-pointer
       p-1
       aria-hidden="true"
       @click="setTipsMessage(index)"
@@ -61,7 +63,6 @@ const setTipsMessage = (dataIndex: number) => {
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
-    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
   }
 }
 
@@ -70,8 +71,8 @@ const setTipsMessage = (dataIndex: number) => {
     gap: 1rem;
 
     .skill-svg {
-      max-width: 3rem;
-      max-height: 3rem;
+      max-width: 3.5rem;
+      max-height: 3.5rem;
     }
   }
 } 
