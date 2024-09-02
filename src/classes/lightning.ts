@@ -9,11 +9,37 @@ class CLightningRoot implements ILightningRoot {
   length = 0;
   degrees = 0;
   count = 0;
+  direction = 0; // 生长方向（0：往左、1往右）
 
-  constructor (startPos: number[], length: number, degrees: number) {
+  constructor (startPos: number[], startIndex: number, length: number, degrees: number) {
     this.startPos = startPos;
     this.length = length;
     this.degrees = degrees;
+    this.setDirection(startIndex);
+  }
+
+  setDirection (startIndex: number) {
+    switch (startIndex) {
+      case 0: // 上
+      case 2: // 下
+        if (Math.random() < 0.5) {
+          this.direction = 0;
+        } else {
+          this.direction = 1;
+        }
+        break;
+      
+      case 1: // 右
+        this.direction = 0;
+        break;
+
+      case 3: // 左
+        this.direction = 1;
+        break;
+
+      default:
+        break;
+    }
   }
 }
 
@@ -39,29 +65,34 @@ export class CLightning {
   }
 
   private createPoints () {
+    const {
+      width,
+      height
+    } = this.canvas;
+
     this.points = [
       // 上
       [
-        getRandomInt(0, this.canvas.width),
+        getRandomInt(0, width),
         0
       ],
 
       // 右
       [
-        this.canvas.width,
-        getRandomInt(0, this.canvas.height),
+        width,
+        getRandomInt(0, height),
       ],
       
       // 下
       [
-        getRandomInt(0, this.canvas.width),
-        this.canvas.height
+        getRandomInt(0, width),
+        height
       ],
       
       // 左
       [
         0,
-        getRandomInt(0, this.canvas.height)
+        getRandomInt(0, height)
       ]
     ];
   }
@@ -76,7 +107,7 @@ export class CLightning {
       const startPos = points[pointIndex];
       const length = this.randomLength();
       const degrees = this.randomDegrees();
-      const root = new CLightningRoot(startPos, length, degrees);
+      const root = new CLightningRoot(startPos, pointIndex, length, degrees);
       const rootIndex = this.roots.length;
 
       points.splice(pointIndex, 1);
@@ -86,12 +117,10 @@ export class CLightning {
     }
   }
 
-  drawLine (startPos: number[], lenth: number, degrees: number, rootIndex: number) {
+  drawLine (startPos: number[], length: number, degrees: number, rootIndex: number) {
+    const root = this.roots[rootIndex];
     const [x, y] = startPos;
-    const endPos = [
-      x + lenth * Math.cos(degrees),
-      y + lenth * Math.sin(degrees)
-    ];
+    const endPos = this.getEndPos(root.direction, startPos, length, degrees);
 
     this.ctx.beginPath();
     this.ctx.lineWidth = 1;
@@ -99,8 +128,6 @@ export class CLightning {
     this.ctx.moveTo(x, y);
     this.ctx.lineTo(endPos[0], endPos[1]);
     this.ctx.stroke();
-
-    const root = this.roots[rootIndex];
 
     if (root.count < MIN_COUNT) {
       this.animations.push(() => this.drawLine(endPos, this.randomLength(), degrees + this.randomDegrees(), rootIndex));
@@ -116,6 +143,22 @@ export class CLightning {
       }
 
       root.count++;
+    }
+  }
+
+  getEndPos (direction: number, startPos: number[], length: number, degrees: number) {
+    const [x, y] = startPos;
+    
+    if  (direction === 0) {
+      return [
+        x - length * Math.cos(degrees),
+        y - length * Math.sin(degrees)
+      ];
+    } else {
+      return [
+        x + length * Math.cos(degrees),
+        y + length * Math.sin(degrees)
+      ];
     }
   }
 

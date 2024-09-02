@@ -1,15 +1,7 @@
 <script setup lang="ts">
-import {
-  ref,
-  computed
-} from 'vue';
+import { ref } from 'vue';
 import { Setting } from '@element-plus/icons-vue';
-import {
-  useStorage,
-  useWindowSize
-} from '@vueuse/core';
-
-const windowSize = useWindowSize();
+import { useStorage } from '@vueuse/core';
 
 const drawer = ref(false);
 const openDrawer = () => {
@@ -27,10 +19,6 @@ const bgEffectOptions = [
     value: 2
   }
 ];
-
-const drawerSize = computed(() => {
-  return windowSize.width.value > 1000 ? '15%' : '70%';
-});
 </script>
 
 <template>
@@ -42,7 +30,7 @@ const drawerSize = computed(() => {
     <el-drawer
       v-model="drawer"
       title="设置"
-      :size="drawerSize"
+      :size="300"
       :z-index="100"
     >
       <div class="setting-item">
