@@ -17,6 +17,10 @@
 }
 
 @keyframes twinkleFloat {
+  // to {
+  //   transform: translate(1px, -1px);
+  // }
+  
   0% {
     opacity: 1;
     transform: translateY(0);

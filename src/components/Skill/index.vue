@@ -12,8 +12,8 @@ const _skills = shuffleArray(skills);
 
 const computeStyle = () => {
   const size = getRandomInt(3, 5);
-  const x = getRandomInt(-10, 10);
-  const y = getRandomInt(0, 20);
+  const x = getRandomInt(-20, 20);
+  const y = getRandomInt(-20, 20);
   const speed = getRandomInt(6, 9);
 
   return {
@@ -71,8 +71,8 @@ const setTipsMessage = (dataIndex: number) => {
     gap: 1rem;
 
     .skill-svg {
-      max-width: 3.5rem;
-      max-height: 3.5rem;
+      max-width: 3rem;
+      max-height: 3rem;
     }
   }
 } 
