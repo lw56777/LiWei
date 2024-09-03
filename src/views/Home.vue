@@ -16,7 +16,7 @@ import Skill from '@/components/Skill/index.vue';
         font-size-8
         text-center
       >
-        Hello Word
+        Hello World
       </div>
 
       <section>
