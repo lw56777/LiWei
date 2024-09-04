@@ -7,7 +7,15 @@ import {
 
 const isDark = useDark({ disableTransition: false });
 const color = '#2c2c2c';
+// @ts-ignore
+const hasTranstion = document.startViewTransition || false;
+
 const themeToggle = (e: MouseEvent) => {
+  if (!hasTranstion) {
+    isDark.value = !isDark.value;
+    return;
+  }
+  
   const x = e.clientX;
   const y = e.clientY;
   const radius = Math.hypot(
