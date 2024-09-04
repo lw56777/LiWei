@@ -18,6 +18,7 @@ const themeToggle = (e: MouseEvent) => {
     `circle(0% at ${ x }px ${ y }px)`,
     `circle(${ radius }px at ${ x }px ${ y }px)`,
   ];
+  // @ts-ignore
   const transition = document.startViewTransition(() => {
     isDark.value = !isDark.value;
   });
