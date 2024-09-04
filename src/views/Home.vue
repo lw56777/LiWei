@@ -55,10 +55,6 @@ import Skill from '@/components/Skill/index.vue';
   .info-box {
     margin: auto;
 
-    // @include resLayout ($PHONE) {
-    //   width: 100%;
-    // }
-
     .title {
       background: var(--rainbow-bg);
       background-size: 200% 200%;

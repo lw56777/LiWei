@@ -41,10 +41,8 @@
   position: fixed;
   right: 0;
   bottom: 0;
-}
 
-@media (max-width: 770px) {
-  .svgimg {
+  @include resLayout ('Pad') {
     padding: 0;
   }
 }

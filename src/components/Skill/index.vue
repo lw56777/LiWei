@@ -58,22 +58,20 @@ const setTipsMessage = (dataIndex: number) => {
 
 <style scoped lang="scss">
 .skill {
+  @include resLayout ('Phone') {
+    gap: 1rem;
+  }
+
   .skill-svg {
     background-color: #8882;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
-  }
-}
 
-@media (max-width: 768px) {
-  .skill {
-    gap: 1rem;
-
-    .skill-svg {
+    @include resLayout ('Phone') {
       max-width: 3rem;
       max-height: 3rem;
     }
   }
-} 
+}
 </style>

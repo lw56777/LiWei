@@ -40,8 +40,12 @@ defineExpose({
 </template>
 
 <style lang="scss">
-@media (max-width: 768px) {
-  .el-dialog {
+.el-dialog {
+  @include resLayout ('Pad') {
+    width: 100%;
+  }
+  
+  @include resLayout ('Phone') {
     width: 100%;
   }
 }

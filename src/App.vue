@@ -78,9 +78,9 @@ provide('oml2d', oml2d);
   min-height: calc(100vh - 60px);
 }
 
-@media (max-width: 768px) {
-  .el-header,
-  .el-main {
+.el-header,
+.el-main {
+  @include resLayout ('Phone') {
     padding: .5rem;
   }
 }
