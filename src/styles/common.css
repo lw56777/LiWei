@@ -43,3 +43,8 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}

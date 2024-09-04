@@ -7,13 +7,41 @@ import {
 
 const isDark = useDark({ disableTransition: false });
 const color = '#2c2c2c';
+const themeToggle = (e: MouseEvent) => {
+  const x = e.clientX;
+  const y = e.clientY;
+  const radius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y)
+  );
+  const cliPatch = [
+    `circle(0% at ${ x }px ${ y }px)`,
+    `circle(${ radius }px at ${ x }px ${ y }px)`,
+  ];
+  const transition = document.startViewTransition(() => {
+    isDark.value = !isDark.value;
+  });
+
+  transition.ready.then(() => {
+    document.documentElement.animate(
+      {
+        clipPath: isDark.value ? cliPatch.reverse() : cliPatch,
+      },
+      {
+        pseudoElement: '::view-transition-new(root)',
+        duration: 500
+      }
+    );
+  });
+}
 </script>
 
 <template>
   <div class="theme">
     <el-switch
-      v-model="isDark"
+      :modelValue="isDark"
       :style="`--el-switch-on-color: ${ color };`"
+      @click="themeToggle($event)"
     >
       <template #active-action>
         <el-icon color="#fff">
