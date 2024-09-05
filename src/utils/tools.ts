@@ -34,3 +34,22 @@ export function shuffleArray (arr: any[]) {
   
   return arr;
 }
+
+// 16进制颜色值转RGBA
+export function hexToRgba (hex: string, alpha: number = 1) {
+  // 将3位16进制颜色值转换为6位
+  hex = hex.replace(/^#([0-9a-f])([0-9a-f])([0-9a-f])$/i, function(r, g, b) {
+    return '#' + r + r + g + g + b + b;
+  });
+
+  // 移除16进制字符串中的#符号
+  hex = hex.replace('#', '');
+
+  // 将16进制颜色值转换为十进制
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  // 返回RGBA格式的字符串
+  return `rgba(${ r }, ${ g }, ${ b }, ${ alpha })`;
+}

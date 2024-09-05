@@ -35,6 +35,7 @@ declare module 'vue' {
     ElSpace: typeof import('element-plus/es')['ElSpace']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTag: typeof import('element-plus/es')['ElTag']
+    ElText: typeof import('element-plus/es')['ElText']
     FunctionMode: typeof import('./src/components/Draggable/FunctionMode.vue')['default']
     Header: typeof import('./src/components/Header/index.vue')['default']
     InstructionMode: typeof import('./src/components/Draggable/InstructionMode.vue')['default']

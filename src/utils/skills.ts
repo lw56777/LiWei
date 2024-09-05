@@ -1,87 +1,87 @@
 const skills = [
   {
     name: 'html',
-    message: '语义化、存储技术、Canvas'
+    color: '#FC490B'
   },
   {
     name: 'css',
-    message: '弹性盒布局、动画、过渡、媒体查询'
+    color: '#2196F3'
   },
   {
     name: 'scss',
-    message: '变量、混入、函数、继承、插件'
+    color: '#FF83C4'
   },
   {
     name: 'Unocss',
-    message: '原子化、模块化、主题'
+    color: '#CCCCCC'
   },
   {
     name: 'Bootstrap',
-    message: '响应式、栅格布局、媒体查询、动画'
+    color: '#563D7C'
   },
   {
     name: 'javascript',
-    message: '对象数组操作、作用域/闭包、原型/原型链'
+    color: '#FFCA28'
   },
   {
     name: 'tubiaozhizuomoban',
-    message: 'Promise、async/await、Set、Map、WeakMap'
+    color: '#F2E433'
   },
   {
     name: 'typescript',
-    message: '类型注解/推断、类的修饰符、接口、继承、泛型'
+    color: '#007ACC'
   },
   {
     name: 'Vue',
-    message: 'Vue2/3、VueX、Vue-Router'
+    color: '#41B883'
   },
   {
     name: 'react',
-    message: '类组件、函数数组、Hooks'
+    color: '#61DAFB'
   },
   {
     name: 'elementui',
-    message: 'Element UI、Element Plus'
+    color: '#29ABE2'
   },
   {
     name: 'uniapp',
-    message: '终端跨平台解决方案'
+    color: '#2B9939'
   },
   {
     name: 'Vitest',
-    message: '前端工具链'
+    color: '#FCC72B'
   },
   {
     name: 'webpack',
-    message: '构建工具'
+    color: '##8ED6FB'
   },
   {
     name: 'Nodejs',
-    message: 'Express、接口开发'
+    color: '#41B883'
   },
   {
     name: 'java',
-    message: '了解一点'
+    color: '#6699FF'
   },
   {
     name: 'golang',
-    message: '了解一点'
+    color: '#00ACD7'
   },
   {
     name: 'pinia',
-    message: '状态管理库'
+    color: '#FFE56C'
   },
   {
     name: 'axios',
-    message: '网络请求'
+    color: '#5A29E4',
   },
   {
     name: 'ECharts',
-    message: '图表可视化'
+    color: '#A9314D'
   },
   {
     name: 'git',
-    message: '版本控制'
+    color: '#E64A19'
   }
 ];
 
