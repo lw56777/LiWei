@@ -43,17 +43,17 @@ const createAnimate = () => {
     const keyframes = [
       {
         filter: filterStart,
-        transform: 'translateY(0)',
+        transform: 'translateY(0) scale(.8)',
         opacity: .5
       },
       {
         filter: filterEnd,
-        transform: 'translateY(-10px)',
+        transform: 'translateY(-10px) scale(1.2)',
         opacity: 1
       },
       {
         filter: filterStart,
-        transform: 'translateY(0)',
+        transform: 'translateY(0) scale(.8)',
         opacity: .5
       }
     ];

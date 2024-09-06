@@ -19,7 +19,28 @@ import Skill from '@/components/Skill/index.vue';
         Hello World
       </div>
 
-      <section>
+      <section class="basic-info">
+        <el-space
+          :size="20"
+          wrap
+        >
+          <el-text type="info">厉威</el-text>
+          <el-text type="info">男</el-text>
+          <el-text type="info">15058665004</el-text>
+          <el-text type="info">535847787@qq.com</el-text>
+        </el-space>
+
+        <el-progress
+          stroke-width="1"
+          color="rgba(136, 136, 136, 0.25)"
+          :show-text="false"
+          :percentage="100"
+          indeterminate
+          :duration="5"
+        />
+      </section>
+
+      <!-- <section>
         <el-descriptions
           :column="2"
           border
@@ -39,7 +60,7 @@ import Skill from '@/components/Skill/index.vue';
             15058665004
           </el-descriptions-item>
         </el-descriptions>
-      </section>
+      </section> -->
 
       <section>
         <Skill />
@@ -66,6 +87,11 @@ import Skill from '@/components/Skill/index.vue';
     section {
       margin-top: 4rem;
     }
+
+    .basic-info {
+      max-width: max-content;
+      margin-left: 1rem;
+    }
   }
 }
 </style>
@@ -73,6 +99,10 @@ import Skill from '@/components/Skill/index.vue';
 <style lang="scss">
 .home {
  .info-box {
+  .el-progress-bar__outer {
+    background-color: transparent;
+  }
+
   .el-descriptions {
     .el-descriptions__label {
       width: 15%;
