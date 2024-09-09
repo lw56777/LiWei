@@ -31,7 +31,7 @@ import Skill from '@/components/Skill/index.vue';
         </el-space>
 
         <el-progress
-          stroke-width="1"
+          :stroke-width="1"
           color="rgba(136, 136, 136, 0.25)"
           :show-text="false"
           :percentage="100"
@@ -39,28 +39,6 @@ import Skill from '@/components/Skill/index.vue';
           :duration="5"
         />
       </section>
-
-      <!-- <section>
-        <el-descriptions
-          :column="2"
-          border
-        >
-          <el-descriptions-item label="姓名">厉威</el-descriptions-item>
-          <el-descriptions-item label="性别">男</el-descriptions-item>
-          <el-descriptions-item
-            label="邮箱"
-            :span="2"
-          >
-            535847787@qq.com
-          </el-descriptions-item>
-          <el-descriptions-item
-            label="电话"
-            :span="2"
-          >
-            15058665004
-          </el-descriptions-item>
-        </el-descriptions>
-      </section> -->
 
       <section>
         <Skill />
