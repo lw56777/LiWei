@@ -17,6 +17,10 @@ const bgEffectOptions = [
   {
     label: '星空',
     value: 2
+  },
+  {
+    label: '冒泡',
+    value: 3
   }
 ];
 </script>

@@ -7,24 +7,20 @@ import {
 } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { getLocalStorage } from '@/utils/tools';
-import { CLightning } from '@/classes/lightning';
+import CLightning from '@/classes/lightning';
 import Astral from './Astral.vue';
+import Bubbling from './Bubbling.vue';
 // import StreetLamp from './StreetLamp.vue';
 
 const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue'));
-
-const effectColor = 'rgba(136, 136, 136, 0.25)';
 
 const canvasRef = ref<HTMLCanvasElement>();
 
 const setBgEffect = () => {
   switch (bgEffectValue.value) {
     case 1:
-      const branch = new CLightning(canvasRef.value!, effectColor);
+      const branch = new CLightning(canvasRef.value!);
       branch.play();
-      break;
-
-    case 2:
       break;
 
     default:
@@ -57,6 +53,7 @@ watch(bgEffectValue, () => {
     />
 
     <Astral v-if="bgEffectValue == 2" />
+    <Bubbling v-if="bgEffectValue == 3" />
 
     <!-- <StreetLamp /> -->
   </div>

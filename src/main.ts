@@ -2,7 +2,6 @@ import { createApp } from 'vue';
 import 'virtual:uno.css';
 import './styles/common.css';
 import './styles/var.scss';
-import './styles/index.scss';
 import './styles/animations.scss';
 import 'element-plus/theme-chalk/dark/css-vars.css';
 import './utils/iconfont.js';
