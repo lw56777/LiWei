@@ -47,7 +47,7 @@ class Dialog {
         close: this.close()
       },
       {
-        default: h(content),
+        default: h(content, ...props),
         footer: this.footer()
       }
     );
