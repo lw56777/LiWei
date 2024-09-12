@@ -16,7 +16,7 @@ import Skill from '@/components/Skill/index.vue';
         font-size-8
         text-center
       >
-        Hello World
+        <span>Hello World</span>
       </div>
 
       <section class="basic-info">
@@ -60,6 +60,11 @@ import Skill from '@/components/Skill/index.vue';
       background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: rainbowBg 30s infinite;
+
+      span {
+        letter-spacing: -15px;
+        animation: expansion 3s forwards;
+      }
     }
 
     section {
@@ -70,6 +75,12 @@ import Skill from '@/components/Skill/index.vue';
       max-width: max-content;
       margin-left: 1rem;
     }
+  }
+}
+
+@keyframes expansion {
+  to {
+    letter-spacing: 0;
   }
 }
 </style>
