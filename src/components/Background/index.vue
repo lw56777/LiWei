@@ -9,7 +9,6 @@ import { useStorage } from '@vueuse/core';
 import { getLocalStorage } from '@/utils/tools';
 import CLightning from '@/classes/lightning';
 import Astral from './Astral.vue';
-import Bubbling from './Bubbling.vue';
 // import StreetLamp from './StreetLamp.vue';
 
 const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue'));
@@ -53,7 +52,6 @@ watch(bgEffectValue, () => {
     />
 
     <Astral v-if="bgEffectValue == 2" />
-    <Bubbling v-if="bgEffectValue == 3" />
 
     <!-- <StreetLamp /> -->
   </div>

@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import img from '@/assets/startport.png';
-
 defineProps({
   prop: Object
 });
 </script>
 
 <template>
-  <el-image
+  <img
     v-bind="prop"
-    :src="img"
-    object-cover
+    class="starport"
+    src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
   />
 </template>
 
 <style scoped lang="scss">
-.el-image {
+.starport {
+  object-fit: cover;
   transition: all 1s ease;
 }
 </style>

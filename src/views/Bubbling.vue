@@ -15,13 +15,18 @@ onMounted(() => {
 
 <template>
   <div
-    ref="bubbleRef"
-    class="bubble-box"
-    opacity-8
-    pos-absolute
-    left-0
-    bottom-0
-  ></div>
+    h-full
+    pos-relative
+  >
+    <div
+      ref="bubbleRef"
+      class="bubble-box"
+      opacity-8
+      pos-absolute
+      left-0
+      bottom-0
+    ></div>
+  </div>
 
   <svg v-show="false">
     <defs>

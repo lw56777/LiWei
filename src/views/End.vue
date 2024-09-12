@@ -1,27 +1,25 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Starport } from 'vue-starport';
-import StarPort from '@/components/Starport/index.vue';
+import Avatar from '@/components/Starport/index.vue';
 
 const value = ref({
-  class: 'w-20',
   style: {
-    transform: 'scaleX(1) translate(70vw, 50vh)'
+    width: '8rem',
+    height: '8rem',
+    borderRadius: '10%',
+    transform: 'translate(100px, 100px) rotate(120deg)'
   }
 });
 </script>
 
 <template>
-  <div
-    class="landing"
-    pos-relative
-  >
-    <el-divider>页面2-落点</el-divider>
+  <div class="landing">
     <Starport
       port="testId"
       keep-alive
     >
-      <StarPort :prop="value" />
+      <Avatar :prop="value" />
     </Starport>
   </div>
 </template>

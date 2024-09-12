@@ -33,7 +33,9 @@ const segmentedChange = (value: string) => {
       @change="segmentedChange"
     />
 
-    <RouterView />
+    <div class="content">
+      <RouterView />
+    </div>
   </div>
 </template>
 
@@ -41,5 +43,18 @@ const segmentedChange = (value: string) => {
 .playground {
   max-width: 1000px;
   margin: auto;
+
+  @include flex() {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .content {
+    width: 22rem;
+    height: 20rem;
+    border: var(--el-border);
+    overflow: hidden;
+    margin: 3rem auto 0 auto;
+  }
 }
 </style>

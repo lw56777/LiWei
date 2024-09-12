@@ -23,14 +23,22 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Playground',
     component: () => import('@/views/Playground.vue'),
     redirect: {
-      name: 'Draggable'
+      name: 'Bubbling'
     },
     children: [
+      {
+        path: '/playground/bubbling',
+        name: 'Bubbling',
+        meta: {
+          title: '全都是泡沫'
+        },
+        component: () => import('@/views/Bubbling.vue')
+      },
       {
         path: '/playground/draggable',
         name: 'Draggable',
         meta: {
-          title: '拖拽组件'
+          title: '拖拽排序'
         },
         component: () => import('@/views/Draggable.vue')
       },
@@ -38,7 +46,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/playground/dialog',
         name: 'Dialog',
         meta: {
-          title: '对话框'
+          title: '对话框封装'
         },
         component: () => import('@/views/Dialog.vue')
       },
@@ -46,7 +54,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/playground/starport',
         name: 'Starport',
         meta: {
-          title: '星港'
+          title: '跨页面动画'
         },
         component: () => import('@/views/Starport.vue'),
         redirect: {

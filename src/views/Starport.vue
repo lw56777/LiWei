@@ -10,20 +10,21 @@ const route = useRoute();
 </script>
 
 <template>
-  <el-divider>跨页面动画</el-divider>
-  <el-button
-    v-if="route.name === 'StarportStart'"
-    @click="router.push({ name: 'StarportEnd' })"
-  >
-    起飞
-  </el-button>
+  <div>
+    <el-button
+      v-if="route.name === 'StarportStart'"
+      @click="router.push({ name: 'StarportEnd' })"
+    >
+      详情页
+    </el-button>
 
-  <el-button
-    v-else
-    @click="router.push({ name: 'StarportStart' })"
-  >
-    返航
-  </el-button>
+    <el-button
+      v-else
+      @click="router.push({ name: 'StarportStart' })"
+    >
+      返回
+    </el-button>
+  </div>
 
   <StarportCarrier>
     <RouterView />
