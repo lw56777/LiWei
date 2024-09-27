@@ -20,7 +20,7 @@ const oml2d = loadOml2d({
   models: [
     {
       // path: 'https://model.oml2d.com/cat-black/model.json',
-      path: '../public/cat-black/model.json',
+      path: '/cat-black/model.json',
       scale: 0.06,
       mobileScale: 0.05
     }
