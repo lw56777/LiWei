@@ -98,7 +98,7 @@ export default class CLightning {
 
   private createRoots () {
     this.roots = [];
-    let maxRootCount = getRandomInt(2, 3);
+    let maxRootCount = getRandomInt(1, 2);
     const points = [...this.points];
     
     while (maxRootCount > 0) {
@@ -148,7 +148,7 @@ export default class CLightning {
   getEndPos (direction: number, startPos: number[], length: number, degrees: number) {
     const [x, y] = startPos;
     
-    if  (direction === 0) {
+    if (direction === 0) {
       return [
         x - length * Math.cos(degrees),
         y - length * Math.sin(degrees)
@@ -203,6 +203,6 @@ export default class CLightning {
       this.isReseting = false;
       this.canvas.classList.remove('fade-out');
       clearTimeout(timer);
-    }, 3000);
+    }, 5000);
   }
 }

@@ -34,10 +34,10 @@ const themeToggle = (e: MouseEvent) => {
   transition.ready.then(() => {
     document.documentElement.animate(
       {
-        clipPath: isDark.value ? cliPatch.reverse() : cliPatch,
+        clipPath: isDark.value ? cliPatch.reverse() : cliPatch
       },
       {
-        pseudoElement: '::view-transition-new(root)',
+        pseudoElement: isDark.value ? '::view-transition-old(root)' : '::view-transition-new(root)',
         duration: 500
       }
     );
@@ -72,6 +72,10 @@ const themeToggle = (e: MouseEvent) => {
     .el-switch__core .el-switch__action {
       background-color: var(--switch-action-color);
     }
+  }
+
+  ::view-transition-new(root) {
+    background-color: red;
   }
 }
 </style>

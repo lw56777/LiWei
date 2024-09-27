@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import {
   ref,
-  onMounted
+  // onMounted
   // inject
 } from 'vue';
 // import { Oml2dMethods } from 'oh-my-live2d';
 import {
   getRandomInt,
   shuffleArray,
-  hexToRgba
+  // hexToRgba
 } from '@/utils/tools';
 import skills from '@/utils/skills';
 
 // const oml2d: Oml2dMethods = inject('oml2d')!;
 const _skills = shuffleArray(skills);
 
-const computeStyle = () => {
-  const size = getRandomInt(3, 5);
+const computeStyle = (color: string) => {
+  const size = getRandomInt(3, 4);
   const x = getRandomInt(-20, 20);
   const y = getRandomInt(-20, 20);
   // const speed = getRandomInt(6, 9);
@@ -24,53 +24,54 @@ const computeStyle = () => {
   return {
     width: `${ size }rem`,
     height: `${ size }rem`,
-    // filter: `drop-shadow(1px 1px 5px ${ color })`,
+    filter: `drop-shadow(1px 1px 2px ${ color })`,
     transform: `translate(${ x }px, ${ y }px)`,
     // animation: `twinkleFloat ${ speed }s infinite alternate`
   }
 }
 
 const skillsRef = ref();
-const createAnimate = () => {
-  const skillEls = skillsRef.value.children;
+// const createAnimate = () => {
+//   const skillEls = skillsRef.value.children;
 
-  _skills.forEach((skill, index) => {
-    const el = skillEls[index];
-    const { width } = el.getBoundingClientRect();
-    const shadowWidth = Math.max(width / 10, 5);
-    const filterStart = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 0) })`;
-    const filterEnd = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 1) })`;
-    const keyframes = [
-      {
-        filter: filterStart,
-        transform: 'translateY(0) scale(.8)',
-        opacity: .5
-      },
-      {
-        filter: filterEnd,
-        transform: 'translateY(-10px) scale(1.2)',
-        opacity: 1
-      },
-      {
-        filter: filterStart,
-        transform: 'translateY(0) scale(.8)',
-        opacity: .5
-      }
-    ];
-    const speed = getRandomInt(6, 9);
-    const options = {
-      duration: speed * 1000,
-      iterations: Infinity,
-      direction: 'alternate'
-    };
+//   _skills.forEach((skill, index) => {
+//     const el = skillEls[index];
+//     const { width } = el.getBoundingClientRect();
+//     const shadowWidth = Math.max(width / 10, 5);
+//     const filterStart = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 0) })`;
+//     const filterEnd = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 1) })`;
 
-    el.animate(keyframes, options);
-  });
-}
+//     const keyframes = [
+//       {
+//         filter: filterStart,
+//         transform: 'translateY(0) scale(.8)',
+//         opacity: .5
+//       },
+//       {
+//         filter: filterEnd,
+//         transform: 'translateY(-10px) scale(1.2)',
+//         opacity: 1
+//       },
+//       {
+//         filter: filterStart,
+//         transform: 'translateY(0) scale(.8)',
+//         opacity: .5
+//       }
+//     ];
+//     const speed = getRandomInt(6, 9);
+//     const options = {
+//       duration: speed * 1000,
+//       iterations: Infinity,
+//       direction: 'alternate'
+//     };
 
-onMounted(() => {
-  createAnimate();
-});
+//     el.animate(keyframes, options);
+//   });
+// }
+
+// onMounted(() => {
+//   createAnimate();
+// });
 
 // const setTipsMessage = (dataIndex: number) => {
 //   const { message } = _skills[dataIndex];
@@ -92,7 +93,7 @@ onMounted(() => {
       v-for="skill of _skills"
       :key="skill.name"
       class="skill-svg"
-      :style="computeStyle()"
+      :style="computeStyle(skill.color)"
       rounded-lg
       cursor-pointer
       p-1
