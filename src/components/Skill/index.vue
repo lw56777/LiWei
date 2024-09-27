@@ -6,7 +6,7 @@ import {
 } from 'vue';
 // import { Oml2dMethods } from 'oh-my-live2d';
 import {
-  getRandomInt,
+  // getRandomInt,
   shuffleArray,
   // hexToRgba
 } from '@/utils/tools';
@@ -15,20 +15,20 @@ import skills from '@/utils/skills';
 // const oml2d: Oml2dMethods = inject('oml2d')!;
 const _skills = shuffleArray(skills);
 
-const computeStyle = (color: string) => {
-  const size = getRandomInt(3, 4);
-  const x = getRandomInt(-20, 20);
-  const y = getRandomInt(-20, 20);
-  // const speed = getRandomInt(6, 9);
+// const computeStyle = (color: string) => {
+//   const size = getRandomInt(3, 4);
+//   const x = getRandomInt(-20, 20);
+//   const y = getRandomInt(-20, 20);
+//   // const speed = getRandomInt(6, 9);
 
-  return {
-    width: `${ size }rem`,
-    height: `${ size }rem`,
-    filter: `drop-shadow(1px 1px 2px ${ color })`,
-    transform: `translate(${ x }px, ${ y }px)`,
-    // animation: `twinkleFloat ${ speed }s infinite alternate`
-  }
-}
+//   return {
+//     width: `${ size }rem`,
+//     height: `${ size }rem`,
+//     filter: `drop-shadow(1px 1px 2px ${ color })`,
+//     transform: `translate(${ x }px, ${ y }px)`,
+//     // animation: `twinkleFloat ${ speed }s infinite alternate`
+//   }
+// }
 
 const skillsRef = ref();
 // const createAnimate = () => {
@@ -93,12 +93,12 @@ const skillsRef = ref();
       v-for="skill of _skills"
       :key="skill.name"
       class="skill-svg"
-      :style="computeStyle(skill.color)"
       rounded-lg
       cursor-pointer
       p-1
       aria-hidden="true"
     >
+    <!-- :style="computeStyle(skill.color)" -->
     <!-- @click="setTipsMessage(index)" -->
       <use :xlink:href="`#icon-${ skill.name }`"></use>
     </svg>
@@ -112,15 +112,17 @@ const skillsRef = ref();
   }
 
   .skill-svg {
+    max-width: 3rem;
+    max-height: 3rem;
     // background-color: #8882;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
 
-    @include resLayout ('Phone') {
-      max-width: 3rem;
-      max-height: 3rem;
-    }
+    // @include resLayout ('Phone') {
+    //   max-width: 3rem;
+    //   max-height: 3rem;
+    // }
   }
 }
 </style>
