@@ -53,13 +53,13 @@ provide('oml2d', oml2d);
 
         <el-main>
           <RouterView v-slot="{ Component }">
-            <Transition
+            <!-- <Transition
               name="el-fade-in"
-            >
+            > -->
               <KeepAlive>
                 <Component :is="Component" />
               </KeepAlive>
-            </Transition>
+            <!-- </Transition> -->
           </RouterView>
 
           <Background />
