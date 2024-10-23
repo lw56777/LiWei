@@ -72,7 +72,15 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('@/views/End.vue'),
           }
         ]
-      }
+      },
+      {
+        path: '/playground/datetime',
+        name: 'DateTime',
+        meta: {
+          title: '日期时间选择禁用'
+        },
+        component: () => import('@/views/DateTime.vue')
+      },
     ]
   }
 ];
