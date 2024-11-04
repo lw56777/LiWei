@@ -10,7 +10,7 @@ import {
 
 const router = useRouter();
 const route = useRoute();
-const { children } = router.getRoutes().find(route => route.name === 'Playground');
+const { children } = router.getRoutes().find(route => route.name === 'Playground')!;
 
 const defaultActive = ref('');
 
