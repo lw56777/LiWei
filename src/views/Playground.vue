@@ -6,7 +6,7 @@ import {
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const { children } = router.getRoutes().find(r => r.name === 'Playground');
+const { children } = router.getRoutes().find(r => r.name === 'Playground')!;
 
 const defaultActive = ref('');
 
