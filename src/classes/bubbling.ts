@@ -29,7 +29,6 @@ export default class CBubbling {
 
       if (len >= 30) {
         const index = getRandomInt(0, len);
-        console.log(index, this.container);
         this.container.removeChild(this.container.children[index]);
       }
 

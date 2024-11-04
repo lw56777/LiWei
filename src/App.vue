@@ -6,7 +6,6 @@ import { loadOml2d } from 'oh-my-live2d';
 import Header from '@/components/Header/index.vue';
 import Rainbow from '@/components/Rainbow/index.vue';
 import Background from '@/components/Background/index.vue';
-import '@/components/CoreSocialistValues';
 
 const tipsStyle = {
   // display: 'none',

@@ -3,16 +3,18 @@ import {
   ref,
   onMounted,
   nextTick,
-  watch
+  watch,
+  watchEffect
 } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { getLocalStorage } from '@/utils/tools';
 import CLightning from '@/classes/lightning';
 import Astral from './Astral.vue';
 // import StreetLamp from './StreetLamp.vue';
+import CoreSocialistValues from '@/components/CoreSocialistValues';
 
 const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue'));
-
+const clickEffectValue = useStorage('clickEffectValue', getLocalStorage('clickEffectValue'));
 const canvasRef = ref<HTMLCanvasElement>();
 
 const setBgEffect = () => {
@@ -35,6 +37,10 @@ watch(bgEffectValue, () => {
   nextTick(() => {
     setBgEffect();
   });
+});
+
+watchEffect(() => {
+  CoreSocialistValues.bindEvent(clickEffectValue.value);
 });
 </script>
 

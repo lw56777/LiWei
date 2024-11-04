@@ -1,15 +1,10 @@
 import {
   App,
   createApp,
-  h,
-  watchEffect
+  h
 } from 'vue';
-import { useStorage } from '@vueuse/core';
 import { ElNotification } from 'element-plus';
-import { getLocalStorage } from '@/utils/tools';
-import CoreSocialistValues from './index.vue';
-
-const clickEffectValue = useStorage('clickEffectValue', getLocalStorage('clickEffectValue'));
+import CSVText from './index.vue';
 
 class CCoreSocialistValues {
   private data = [
@@ -28,17 +23,14 @@ class CCoreSocialistValues {
   ];
   private dataIndex = 0;
   private count = 0;
+  private _show = this.show.bind(this);
 
-  constructor () {
-    const fn = this.show.bind(this);
-
-    watchEffect(() => {
-      if (clickEffectValue.value) {
-        document.addEventListener('click', fn, false);
-      } else {
-        document.removeEventListener('click', fn, false);
-      }
-    });
+  bindEvent (value: Boolean) {
+    if (value) {
+      document.addEventListener('click', this._show, false);
+    } else {
+      document.removeEventListener('click', this._show, false);
+    }
   }
 
   private setDataIndex () {
@@ -61,7 +53,7 @@ class CCoreSocialistValues {
     this.count--;
   }
 
-  show (e: MouseEvent) {
+  private show (e: MouseEvent) {
     if (this.count >= this.data.length) {
       ElNotification({
         type: 'warning',
@@ -78,7 +70,7 @@ class CCoreSocialistValues {
     } = e;
 
     const vnode = h(
-      CoreSocialistValues,
+      CSVText,
       {
         text: this.getDataItem(),
         top: clientY + 'px',
@@ -94,7 +86,7 @@ class CCoreSocialistValues {
     this.hide(app, container);
   }
 
-  hide (app: App<Element>, container: HTMLElement, delay = 1500) {
+  private hide (app: App<Element>, container: HTMLElement, delay = 1500) {
     const t = setTimeout(() => {
       app.unmount();
       document.body.removeChild(container);
