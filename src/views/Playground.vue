@@ -31,7 +31,7 @@ watchEffect(() => {
             :index="item.path"
           >
             <template #title>
-              <span>{{ item.meta.title }}</span>
+              <span>{{ item.meta?.title }}</span>
             </template>
 
             <el-menu-item
@@ -40,7 +40,7 @@ watchEffect(() => {
               :index="c.path"
               
             >
-              {{ c.meta.title }}
+              {{ c.meta?.title }}
             </el-menu-item>
           </el-sub-menu>
 
@@ -48,7 +48,7 @@ watchEffect(() => {
             v-else
             :index="item.path"
           >
-            <span>{{ item.meta.title }}</span>
+            <span>{{ item.meta?.title }}</span>
           </el-menu-item>
         </template>
       </el-menu>
