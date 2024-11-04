@@ -3,14 +3,10 @@ import {
   ref,
   watchEffect
 } from 'vue';
-import {
-  useRouter,
-  useRoute
-} from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const route = useRoute();
-const { children } = router.getRoutes().find(route => route.name === 'Playground')!;
+const { children } = router.getRoutes().find(r => r.name === 'Playground');
 
 const defaultActive = ref('');
 
