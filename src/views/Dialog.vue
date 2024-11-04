@@ -11,10 +11,11 @@ const dialogRef = ref();
 </script>
 
 <template>
-  <el-divider></el-divider>
-  <el-button @click="dialogRef.open(Test1)">组件1</el-button>
-  <el-button @click="dialogRef.open(Test2)">组件2</el-button>
-  <el-button @click="dialogRef.open('文本内容...')">文本内容</el-button>
-  
-  <Dialog ref="dialogRef" />
+  <div p-1>
+    <el-button @click="dialogRef.open(Test1)">组件1</el-button>
+    <el-button @click="dialogRef.open(Test2)">组件2</el-button>
+    <el-button @click="dialogRef.open('文本内容...')">文本内容</el-button>
+    
+    <Dialog ref="dialogRef" />
+  </div>
 </template>

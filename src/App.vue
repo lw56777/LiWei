@@ -4,6 +4,7 @@ import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import { loadOml2d } from 'oh-my-live2d';
 import Header from '@/components/Header/index.vue';
+import Rainbow from '@/components/Rainbow/index.vue';
 import Background from '@/components/Background/index.vue';
 import '@/components/CoreSocialistValues';
 
@@ -62,6 +63,8 @@ provide('oml2d', oml2d);
               </KeepAlive>
             <!-- </Transition> -->
           </RouterView>
+
+          <Rainbow />
 
           <Background />
         </el-main>

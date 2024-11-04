@@ -64,11 +64,17 @@ const routes: Array<RouteRecordRaw> = [
           {
             path: '/playground/starport/start',
             name: 'StarportStart',
+            meta: {
+              title: '页面A'
+            },
             component: () => import('@/views/Start.vue'),
           },
           {
             path: '/playground/starport/end',
             name: 'StarportEnd',
+            meta: {
+              title: '页面B'
+            },
             component: () => import('@/views/End.vue'),
           }
         ]
@@ -77,7 +83,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/playground/datetime',
         name: 'DateTime',
         meta: {
-          title: '日期时间选择禁用'
+          title: '日期时间选择'
         },
         component: () => import('@/views/DateTime.vue')
       },

@@ -11,7 +11,7 @@ const openDrawer = () => {
 const bgEffectValue = useStorage('bgEffectValue', 1);
 const bgEffectOptions = [
   {
-    label: '梅开二度',
+    label: '梅开',
     value: 1
   },
   {
@@ -19,6 +19,8 @@ const bgEffectOptions = [
     value: 2
   }
 ];
+
+const clickEffectValue = useStorage('clickEffectValue', true);
 </script>
 
 <template>
@@ -30,7 +32,7 @@ const bgEffectOptions = [
     <el-drawer
       v-model="drawer"
       title="设置"
-      :size="300"
+      :size="250"
       :z-index="100"
     >
       <div class="setting-item">
@@ -38,12 +40,22 @@ const bgEffectOptions = [
         <div class="handle">
           <el-select v-model="bgEffectValue">
             <el-option
-              v-for="item in bgEffectOptions"
+              v-for="item of bgEffectOptions"
               :key="item.value"
               :label="item.label"
               :value="item.value"
             />
           </el-select>
+        </div>
+      </div>
+
+      <div class="setting-item">
+        <el-divider border-style="dashed">点击效果</el-divider>
+        <div class="handle">
+          <el-switch
+            v-model="clickEffectValue"
+            style="--el-switch-on-color: #13ce66;"
+          />
         </div>
       </div>
     </el-drawer>

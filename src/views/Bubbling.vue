@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import {
   ref,
-  onMounted
+  onMounted,
+  onBeforeUnmount
 } from 'vue';
 import CBubbling from '@/classes/bubbling';
 
 const bubbleRef = ref();
+const bubble = new CBubbling();
 
 onMounted(() => {
-  const bubble = new CBubbling(bubbleRef.value);
+  bubble.setContainer(bubbleRef.value);
   bubble.play();
+});
+
+onBeforeUnmount(() => {
+  bubble.stop();
 });
 </script>
 

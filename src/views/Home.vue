@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Rainbow from '@/components/Rainbow/index.vue';
 import Skill from '@/components/Skill/index.vue';
 </script>
 
@@ -43,8 +42,6 @@ import Skill from '@/components/Skill/index.vue';
       <section>
         <Skill />
       </section>
-
-      <Rainbow />
     </div>
   </div>
 </template>

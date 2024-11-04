@@ -4,7 +4,7 @@
     pos-fixed
     w-50
     h-50
-    opacity-75
+    opacity-88
   ></div>
 </template>
 
@@ -73,6 +73,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   animation: rainbowBg 30s infinite;
-  // z-index: -100;
+  z-index: -1;
 }
 </style>

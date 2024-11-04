@@ -96,6 +96,7 @@ const calendarChange = (date: Date[]) => {
 
 const change = (val: string) => {
   if (!val) {
+    value.value = '';
     calendarDateTime.value = [];
   }
 }
@@ -124,6 +125,3 @@ const change = (val: string) => {
     />
   </div>
 </template>
-
-<style scoped lang="scss">
-</style>

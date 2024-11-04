@@ -1,12 +1,15 @@
 import {
   App,
   createApp,
-  h
+  h,
+  watchEffect
 } from 'vue';
+import { useStorage } from '@vueuse/core';
 import { ElNotification } from 'element-plus';
-import skills from '@/utils/skills';
-import { getRandomInt } from '@/utils/tools';
+import { getLocalStorage } from '@/utils/tools';
 import CoreSocialistValues from './index.vue';
+
+const clickEffectValue = useStorage('clickEffectValue', getLocalStorage('clickEffectValue'));
 
 class CCoreSocialistValues {
   private data = [
@@ -24,11 +27,18 @@ class CCoreSocialistValues {
     '友善'
   ];
   private dataIndex = 0;
-  private colors = skills.map((skill: any) => skill.color);
   private count = 0;
 
   constructor () {
-    document.addEventListener('click', this.show.bind(this), false);
+    const fn = this.show.bind(this);
+
+    watchEffect(() => {
+      if (clickEffectValue.value) {
+        document.addEventListener('click', fn, false);
+      } else {
+        document.removeEventListener('click', fn, false);
+      }
+    });
   }
 
   private setDataIndex () {
@@ -43,17 +53,13 @@ class CCoreSocialistValues {
     return this.data[this.dataIndex];
   }
 
-  private getRandomColor () {
-    return this.colors[getRandomInt(0, this.colors.length - 1)];
-  }
-
   private incrementCount () {
     this.count++;
   }
 
   private decrementCount () {
     this.count--;
-  } 
+  }
 
   show (e: MouseEvent) {
     if (this.count >= this.data.length) {
@@ -75,7 +81,6 @@ class CCoreSocialistValues {
       CoreSocialistValues,
       {
         text: this.getDataItem(),
-        color: this.getRandomColor(),
         top: clientY + 'px',
         left: clientX + 'px'
       }
@@ -89,7 +94,7 @@ class CCoreSocialistValues {
     this.hide(app, container);
   }
 
-  hide (app: App<Element>, container: HTMLElement, delay = 2000) {
+  hide (app: App<Element>, container: HTMLElement, delay = 1500) {
     const t = setTimeout(() => {
       app.unmount();
       document.body.removeChild(container);

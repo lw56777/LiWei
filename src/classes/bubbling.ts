@@ -1,12 +1,12 @@
 import { getRandomInt } from '@/utils/tools';
 
 export default class CBubbling {
-  private container;
+  private container: HTMLElement = document.createElement('div');
   private wW = 350;
   private wH = 320;
   private timer: any = null;
 
-  constructor (container: HTMLElement) {
+  setContainer (container: HTMLElement) {
     this.container = container;
     this.createBubbles(10);
   }
@@ -29,6 +29,7 @@ export default class CBubbling {
 
       if (len >= 30) {
         const index = getRandomInt(0, len);
+        console.log(index, this.container);
         this.container.removeChild(this.container.children[index]);
       }
 
