@@ -11,6 +11,7 @@ declare module 'vue' {
     Background: typeof import('./src/components/Background/index.vue')['default']
     Bubbling: typeof import('./src/components/Background/Bubbling.vue')['default']
     ComponentMode: typeof import('./src/components/Draggable/ComponentMode.vue')['default']
+    CoreSocialistValues: typeof import('./src/components/CoreSocialistValues/index.vue')['default']
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
     ElAlert: typeof import('element-plus/es')['ElAlert']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']

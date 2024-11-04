@@ -5,6 +5,7 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import { loadOml2d } from 'oh-my-live2d';
 import Header from '@/components/Header/index.vue';
 import Background from '@/components/Background/index.vue';
+import '@/components/CoreSocialistValues';
 
 const tipsStyle = {
   // display: 'none',
