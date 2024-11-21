@@ -7,11 +7,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    App: typeof import('./src/components/IPhone/HomeScreen/App.vue')['default']
+    Application: typeof import('./src/components/IPhone/Application/index.vue')['default']
     Astral: typeof import('./src/components/Background/Astral.vue')['default']
     Background: typeof import('./src/components/Background/index.vue')['default']
     ComponentMode: typeof import('./src/components/Draggable/ComponentMode.vue')['default']
     CoreSocialistValues: typeof import('./src/components/CoreSocialistValues/index.vue')['default']
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
+    DynamicIsland: typeof import('./src/components/IPhone/DynamicIsland/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -37,7 +40,11 @@ declare module 'vue' {
     ElText: typeof import('element-plus/es')['ElText']
     FunctionMode: typeof import('./src/components/Draggable/FunctionMode.vue')['default']
     Header: typeof import('./src/components/Header/index.vue')['default']
+    HeaderBar: typeof import('./src/components/IPhone/HeaderBar/index.vue')['default']
+    HomeIndicator: typeof import('./src/components/IPhone/LockScreen/HomeIndicator.vue')['default']
+    HomeScreen: typeof import('./src/components/IPhone/HomeScreen/index.vue')['default']
     InstructionMode: typeof import('./src/components/Draggable/InstructionMode.vue')['default']
+    LockScreen: typeof import('./src/components/IPhone/LockScreen/index.vue')['default']
     Rainbow: typeof import('./src/components/Rainbow/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -47,8 +54,10 @@ declare module 'vue' {
     Starport: typeof import('vue-starport')['Starport']
     StarportCarrier: typeof import('vue-starport')['StarportCarrier']
     StreetLamp: typeof import('./src/components/Background/StreetLamp.vue')['default']
+    TabBar: typeof import('./src/components/IPhone/HomeScreen/tab-bar.vue')['default']
     Test1: typeof import('./src/components/Dialog/Test1.vue')['default']
     Test2: typeof import('./src/components/Dialog/Test2.vue')['default']
     Theme: typeof import('./src/components/Header/Theme.vue')['default']
+    Time: typeof import('./src/components/IPhone/HeaderBar/Time.vue')['default']
   }
 }

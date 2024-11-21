@@ -12,6 +12,7 @@
     "@vueuse/core": "^11.0.1",
     "element-plus": "^2.8.0",
     "oh-my-live2d": "^0.19.3",
+    "swiper": "^11.1.14",
     "vue": "^3.4.35",
     "vue-draggable-plus": "^0.5.3",
     "vue-router": "^4.4.3",

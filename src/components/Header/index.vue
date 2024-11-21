@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { Opportunity } from '@element-plus/icons-vue';
+import {
+  Opportunity,
+  Iphone,
+} from '@element-plus/icons-vue';
 // import Signature from './Signature.vue';
 import Setting from './Setting.vue';
 import Theme from './Theme.vue';
@@ -33,6 +36,12 @@ const router = useRouter();
       items-center
       justify-end
     >
+      <li>
+        <el-icon @click="router.push({ name: 'IPhone' })">
+          <Iphone />
+        </el-icon>
+      </li>
+
       <li>
         <el-icon @click="router.push({ name: 'Playground' })">
           <Opportunity />

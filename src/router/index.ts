@@ -88,7 +88,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/DateTime.vue')
       },
     ]
-  }
+  },
+  {
+    path: '/iphone',
+    name: 'IPhone',
+    component: () => import('@/views/IPhone.vue')
+  },
 ];
 
 const router = createRouter({
