@@ -3,20 +3,24 @@ type TApp = {
   name?: string;
   color: string;
   bgColor: string;
+  delay: string;
 }
 
-defineProps({
+const props = defineProps({
   app: {
     type: Object as () => TApp,
     required: true
   },
-  isPage: Boolean
+  isPage: Boolean,
+  editStatus: Boolean
 });
+
+const { delay } = props.app;
 </script>
 
 <template>
   <div
-    :class="['app', isPage && 'page-app']"
+    :class="['app', isPage && 'page-app', editStatus && 'editing']"
     flex
     items-center
     justify-center
@@ -59,7 +63,12 @@ defineProps({
 <style scoped lang="scss">
 .app {
   &.page-app {
-    animation: appAnimation var(--duration) forwards;
+    animation: appShow var(--duration) forwards;
+  }
+
+  &.editing {
+    cursor: move;
+    animation: appEdit .15s v-bind(delay) infinite alternate;
   }
 
   .app-name {
@@ -69,7 +78,7 @@ defineProps({
   }
 }
 
-@keyframes appAnimation {
+@keyframes appShow {
   to {
     transform: scale(1) translate(0, 0);
   }
@@ -78,6 +87,20 @@ defineProps({
 @keyframes nameShow {
   to {
     opacity: 1;
+  }
+}
+
+@keyframes appEdit {
+  0% {
+    transform: rotate(3deg);
+  }
+  
+  50% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-3deg);
   }
 }
 </style>

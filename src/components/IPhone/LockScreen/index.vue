@@ -38,11 +38,7 @@ onMounted(() => {
 
     <HomeIndicator
       @mousedown="indicator?.onStart($event)"
-      @mousemove="indicator?.onMove($event)"
-      @mouseup="indicator?.onEnd()"
       @touchstart="indicator?.onStart($event)"
-      @touchmove="indicator?.onMove($event)"
-      @touchend="indicator?.onEnd()"
     />
   </div>
 </template>

@@ -39,6 +39,8 @@ export function shuffleArray (arr: any[]) {
 
 // 16进制颜色值转RGBA
 export function hexToRgba (hex: string, alpha: number = 1) {
+  if (!hex) return;
+  
   // 将3位16进制颜色值转换为6位
   hex = hex.replace(/^#([0-9a-f])([0-9a-f])([0-9a-f])$/i, function(r, g, b) {
     return '#' + r + r + g + g + b + b;

@@ -196,13 +196,13 @@ export default class CLightning {
   reset () {
     this.isReseting = true;
     this.canvas.classList.add('fade-out');
-    const timer = setTimeout(() => {
+    const t = setTimeout(() => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.createRoots();
       this.isStop = false;
       this.isReseting = false;
       this.canvas.classList.remove('fade-out');
-      clearTimeout(timer);
+      clearTimeout(t);
     }, 5000);
   }
 }

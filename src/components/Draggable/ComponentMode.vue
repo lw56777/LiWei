@@ -40,7 +40,6 @@ const onEnd = () => {
 <template>
   <div class="component-mode">
     <VueDraggable
-      ref="el"
       v-model="list"
       target=".box"
       :animation="150"
