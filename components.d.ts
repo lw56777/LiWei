@@ -35,6 +35,7 @@ declare module 'vue' {
     HomeIndicator: typeof import('./src/components/IPhone/LockScreen/HomeIndicator.vue')['default']
     HomeScreen: typeof import('./src/components/IPhone/HomeScreen/index.vue')['default']
     InstructionMode: typeof import('./src/components/Draggable/InstructionMode.vue')['default']
+    LockIcon: typeof import('./src/components/IPhone/LockScreen/LockIcon.vue')['default']
     LockScreen: typeof import('./src/components/IPhone/LockScreen/index.vue')['default']
     Rainbow: typeof import('./src/components/Rainbow/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

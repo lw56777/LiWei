@@ -10,10 +10,10 @@ import {
   shuffleArray,
   // hexToRgba
 } from '@/utils/tools';
-import skills from '@/utils/skills';
+import svgIconFont from '@/utils/svg';
 
 // const oml2d: Oml2dMethods = inject('oml2d')!;
-const _skills = shuffleArray(skills);
+const _skills = shuffleArray(svgIconFont.skill);
 
 // const computeStyle = (color: string) => {
 //   const size = getRandomInt(3, 4);

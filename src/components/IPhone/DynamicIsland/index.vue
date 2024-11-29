@@ -10,11 +10,14 @@
     h-6
     bg-black
     rounded-full
+    px-1
     pos-absolute
     top-2
     z-3
   >
-    <!-- 后续配合功能加入显示效果 -->
+    <slot name="left"></slot>
+    <slot></slot>
+    <slot name="right"></slot>
   </div>
 </template>
 
@@ -24,5 +27,20 @@
   left: 50%;
   transform: translateX(-50%);
   transition: all .5s ease-in;
+  animation: unLock 1s forwards;
+}
+
+@keyframes unLock {
+  0% {
+    width: 100px;
+  }
+
+  60% {
+    width: 120px;
+  }
+
+  100% {
+    width: 100px;
+  }
 }
 </style>
