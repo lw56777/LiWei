@@ -8,6 +8,7 @@ import CApp from './app';
 
 const appSvg = [...svgIconFont.app, ...svgIconFont.skill];
 const tabAppNames = ['html', 'css', 'javascript', 'typescript'];
+const appBaseOffset: number[] = [];
 let _endClock;
 
 class CIPhone {
@@ -40,11 +41,14 @@ class CIPhone {
   }
 
   setIsWakeUp (status?: boolean) {
-    this.setIsInHome(false);
     this.isWakeUp.value = status !== undefined ? status : !this.isWakeUp.value;
 
     if (this.isWakeUp.value) {
       this.setLockStatus();
+    }
+
+    if (this.isInHome.value) {
+      this.setIsInHome(false);
     }
   }
 
@@ -132,9 +136,7 @@ class CIPhone {
   getAppAnimation (app: HTMLElement, appIndex: number, width: number, height: number) {
     const {
       offsetTop,
-      offsetLeft,
-      offsetWidth,
-      offsetHeight
+      offsetLeft
     } = app;
     const baseWidth = width - offsetLeft;
     const baseHeight = height - offsetTop;
@@ -143,65 +145,70 @@ class CIPhone {
     let x = 0;
     let y = 0;
     let s = 1;
-    let d = Math.abs(appIndex - 12) / 10 + .3;
-  
-    if ([0, 1].includes(colIndex)) {
-      x = -baseWidth;
-      // 前三行
-      if (rowIndex <= 2) {
-        x = x + (rowIndex * offsetWidth / 3);
-      } else {
-        // 后三行
-        x = x - (rowIndex * offsetWidth / 2);
-      }
+    let d = 1;
+
+    if ([0, 3].includes(colIndex)) {
+      d = 2 * (rowIndex + 1);
     } else {
-      x = width - baseWidth + offsetWidth;
-      // 前三行
-      if (rowIndex <= 2) {
-        x = x + (rowIndex * offsetWidth / 3);
-      } else {
-        // 后三行
-        x = x - (rowIndex * offsetWidth / 2);
-      }
+      d = 1.8 * (rowIndex + 1);
     }
-  
-    // 前三行
-    if (rowIndex <= 2) {
-      y = -baseHeight - (rowIndex * offsetHeight / 3);
-      d = d - (rowIndex + 1) * .1;
-  
+
+    d = d / 10;
+
+    if (rowIndex === 0) {
+      d = d + .5;
+
       switch (colIndex) {
         case 0:
-        case 3:
-          s = 2.5;
-          break;
-  
         case 1:
-        case 2:
-          s = 1.5;
+          x = -baseWidth * 2;
+          y = -baseHeight * 2;
+          s = 2;
+
+          if (appIndex === 0) {
+            appBaseOffset.push(x, y, s);
+          }
           break;
-  
+
+        case 2:
+        case 3:
+          const [
+            x1,
+            y1,
+            s1
+          ] = appBaseOffset;
+
+          x = Math.abs(x1);
+          y = y1;
+          s = s1;
+          break;
+
         default:
           break;
       }
     } else {
-      // 后三行
-      y = baseHeight + (rowIndex * offsetHeight / 2);
-      d = d + rowIndex / 10 - .4;
-  
-      switch (colIndex) {
-        case 0:
-        case 3:
-          s = 5;
-          break;
-  
-        case 1:
-        case 2:
-          s = 3;
-          break;
-  
-        default:
-          break;
+      const [
+        x1,
+        y1,
+        s1
+      ] = appBaseOffset;
+
+      if (rowIndex === 1) {
+        x = x1 / 2;
+        y = y1 / 2;
+        s = s1 / 2;
+
+        if ([2, 3].includes(colIndex)) {
+          x = Math.abs(x);
+        }
+      } else {
+        x = x1 * (rowIndex - 1);
+        y = Math.abs(y1) * (rowIndex - 1);
+        s = s1 * (rowIndex - 1);
+
+        if ([2, 3].includes(colIndex)) {
+          x = Math.abs(x);
+        }
       }
     }
   

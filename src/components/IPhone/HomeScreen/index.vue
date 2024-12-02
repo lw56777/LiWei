@@ -100,7 +100,7 @@ watch(
             <VueDraggable
               v-model="pageApp[pageIndex]"
               :disabled="!editStatus"
-              :animation="200"
+              :animation="150"
               group="app"
               target=".page-item"
               @start="MyIPhone.appDragStart($event)"
@@ -109,7 +109,7 @@ watch(
               <div
                 class="page-item"
                 grid
-                gap-4
+                gap-3
                 grid-cols-4
               >
                 <div

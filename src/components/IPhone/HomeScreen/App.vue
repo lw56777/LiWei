@@ -66,6 +66,10 @@ const { delay } = props.app;
     cursor: move;
     animation: appEdit .15s v-bind(delay) infinite alternate;
   }
+
+  .app-name {
+    transition: all .5s ease-in;
+  }
 }
 
 @keyframes appShow {
