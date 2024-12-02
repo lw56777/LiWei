@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     App: typeof import('./src/components/IPhone/HomeScreen/App.vue')['default']
-    Application: typeof import('./src/components/IPhone/Application/index.vue')['default']
     Astral: typeof import('./src/components/Background/Astral.vue')['default']
     Background: typeof import('./src/components/Background/index.vue')['default']
     ComponentMode: typeof import('./src/components/Draggable/ComponentMode.vue')['default']
