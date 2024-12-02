@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { provide } from 'vue';
+import { useStorage } from '@vueuse/core';
 import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import { loadOml2d } from 'oh-my-live2d';
+import { getLocalStorage } from '@/utils/tools';
 import Header from '@/components/Header/index.vue';
 import Rainbow from '@/components/Rainbow/index.vue';
 import Background from '@/components/Background/index.vue';
@@ -42,6 +44,8 @@ const oml2d = loadOml2d({
 });
 
 provide('oml2d', oml2d);
+
+const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue'));
 </script>
 
 <template>
@@ -63,7 +67,7 @@ provide('oml2d', oml2d);
             <!-- </Transition> -->
           </RouterView>
 
-          <Rainbow />
+          <Rainbow v-if="bgEffectValue !== 0" />
 
           <Background />
         </el-main>

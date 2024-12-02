@@ -1,14 +1,9 @@
 <script setup lang="ts">
-type TApp = {
-  name?: string;
-  color: string;
-  bgColor: string;
-  delay: string;
-}
+import CApp from '@/classes/IPhone/app';
 
 const props = defineProps({
   app: {
-    type: Object as () => TApp,
+    type: Object as () => CApp,
     required: true
   },
   isPage: Boolean,
@@ -53,6 +48,7 @@ const { delay } = props.app;
       tag="span"
       size="small"
       truncated
+      opacity-0
       pt-1
     >
       {{ app.name }}
@@ -70,23 +66,11 @@ const { delay } = props.app;
     cursor: move;
     animation: appEdit .15s v-bind(delay) infinite alternate;
   }
-
-  .app-name {
-    user-select: none;
-    opacity: 0;
-    animation: 3s nameShow .1s forwards;
-  }
 }
 
 @keyframes appShow {
   to {
     transform: scale(1) translate(0, 0);
-  }
-}
-
-@keyframes nameShow {
-  to {
-    opacity: 1;
   }
 }
 

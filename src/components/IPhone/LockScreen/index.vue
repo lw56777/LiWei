@@ -1,23 +1,14 @@
 <script setup lang="ts">
-import {
-  ref,
-  onMounted
-} from 'vue';
-import CIndicator from '@/classes/Indicator';
-import HomeIndicator from './HomeIndicator.vue';
-import Time from '../HeaderBar/Time.vue';
-
-const lockScreenRef = ref<HTMLElement>();
-const indicator = ref<CIndicator | null>(null);
-
-onMounted(() => {
-  indicator.value = new CIndicator(lockScreenRef.value!);
+defineProps({
+  top: {
+    type: Number,
+    default: 0
+  }
 });
 </script>
 
 <template>
   <div
-    ref="lockScreenRef"
     class="lock-screen"
     w-full
     h-full
@@ -28,18 +19,13 @@ onMounted(() => {
     <div
       class="lock-bg"
       :style="{
-        transform: `translateY(${ Math.abs(indicator?.top || 0) }px)`
+        transform: `translateY(${ Math.abs(top) }px)`
       }"
     ></div>
 
     <slot name="header"></slot>
-
-    <Time :className="'lock-time'" />
-
-    <HomeIndicator
-      @mousedown="indicator?.onStart($event)"
-      @touchstart="indicator?.onStart($event)"
-    />
+    <slot></slot>
+    <slot name="footer"></slot>
   </div>
 </template>
 

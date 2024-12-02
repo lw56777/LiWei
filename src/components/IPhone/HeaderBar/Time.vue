@@ -42,6 +42,8 @@ setInterval(() => {
     background: url('../../../assets/iphone-bg.jpg') no-repeat center center;
     background-size: cover;
     background-clip: text;
+    mix-blend-mode: screen;
+    filter: brightness(1.5);
     padding-top: 4rem;
     position: absolute;
     top: 0;
