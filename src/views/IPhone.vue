@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { nextTick } from 'vue';
+import {
+  onMounted,
+  watch,
+  nextTick
+} from 'vue';
 import MyIPhone from '@/classes/IPhone';
 import DynamicIsland from '@/components/IPhone/DynamicIsland/index.vue';
 import HeaderBar from '@/components/IPhone/HeaderBar/index.vue';
@@ -9,14 +13,20 @@ import LockScreen from '@/components/IPhone/LockScreen/index.vue';
 import HomeScreen from '@/components/IPhone/HomeScreen/index.vue';
 import LockIcon from '@/components/IPhone/LockScreen/LockIcon.vue';
 
-// 点亮屏幕
-const batteryScreen = () => {
-  MyIPhone.setIsWakeUp(true);
-  nextTick(() => {
-    MyIPhone.setContainer();
-    MyIPhone.setHomeBar('.lock-screen');
-  });
-}
+onMounted(() => {
+  MyIPhone.setContainer();
+});
+
+watch(
+  () => MyIPhone.isWakeUp.value,
+  (value) => {
+    if (value) {
+      nextTick(() => {
+        MyIPhone.setHomeBar('.lock-screen');
+      });
+    }
+  }
+);
 </script>
 
 <template>
@@ -31,7 +41,7 @@ const batteryScreen = () => {
     <div
       class="iphone"
       w-70
-      h-148
+      h-144
       font-size-3
       rounded-3xl
       shadow-dark
@@ -57,7 +67,7 @@ const batteryScreen = () => {
             w-full
             h-full
             opacity-50
-            @click="batteryScreen"
+            @click="MyIPhone.setIsWakeUp(true)"
           >
             轻触唤醒屏幕
           </div>
@@ -105,7 +115,7 @@ const batteryScreen = () => {
         h-15
         font-size-2
         color-gray
-        bg-black
+        bg-gray-8
         rounded-full
         pos-absolute
         top-28

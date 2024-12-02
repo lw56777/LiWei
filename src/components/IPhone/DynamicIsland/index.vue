@@ -23,7 +23,7 @@
 
 <style scoped lang="scss">
 .dynamic-island {
-  max-width: 120px;
+  max-width: 150px;
   left: 50%;
   transform: translateX(-50%);
   transition: all .5s ease-in;
@@ -36,7 +36,7 @@
   }
 
   60% {
-    width: 120px;
+    width: 140px;
   }
 
   100% {
