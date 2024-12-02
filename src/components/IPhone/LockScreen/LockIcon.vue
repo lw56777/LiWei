@@ -5,7 +5,10 @@ defineProps({
 </script>
 
 <template>
-  <div :class="['lock-icon', lockStatus === 1 && 'unlock']">
+  <div
+    v-show="lockStatus"
+    :class="['lock-icon', lockStatus === 2 && 'unlock']"
+  >
     <div class="lock">
       <div class="unlocker"></div>
     </div>

@@ -11,6 +11,10 @@ const openDrawer = () => {
 const bgEffectValue = useStorage('bgEffectValue', 1);
 const bgEffectOptions = [
   {
+    label: '关闭',
+    value: 0
+  },
+  {
     label: '梅开',
     value: 1
   },
@@ -52,10 +56,14 @@ const clickEffectValue = useStorage('clickEffectValue', true);
       <div class="setting-item">
         <el-divider border-style="dashed">点击效果</el-divider>
         <div class="handle">
-          <el-switch
-            v-model="clickEffectValue"
-            style="--el-switch-on-color: #13ce66;"
-          />
+          <el-space>
+            <el-text type="info">社会主义核心价值观</el-text>
+            
+            <el-switch
+              v-model="clickEffectValue"
+              style="--el-switch-on-color: #13ce66;"
+            />
+          </el-space>
         </div>
       </div>
     </el-drawer>
