@@ -78,12 +78,14 @@ const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue
 
 <style scoped lang="scss">
 .el-header {
+  height: 40px;
+  padding: 0 10px;
   position: sticky;
   top: 0;
 }
 
 .el-main {
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 40px);
 }
 
 .el-header,

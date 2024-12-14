@@ -23,6 +23,7 @@ const router = useRouter();
     <div class="logo">
       <!-- <Signature /> -->
       <el-avatar
+        class="avatar"
         :size="30"
         :src="avatar"
         cursor-pointer
@@ -61,11 +62,26 @@ const router = useRouter();
 
 <style scoped lang="scss">
 .header {
+  .logo {
+    .avatar {
+      animation: rotate 6s linear infinite;
+    }
+  }
+
   .menu {
     li {
       cursor: pointer;
       padding: 0 .5rem;
     }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

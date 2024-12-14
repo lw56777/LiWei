@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     App: typeof import('./src/components/IPhone/HomeScreen/App.vue')['default']
-    Application: typeof import('./src/components/IPhone/Application/index.vue')['default']
     Astral: typeof import('./src/components/Background/Astral.vue')['default']
     Background: typeof import('./src/components/Background/index.vue')['default']
     ComponentMode: typeof import('./src/components/Draggable/ComponentMode.vue')['default']
@@ -16,6 +15,7 @@ declare module 'vue' {
     Dialog: typeof import('./src/components/Dialog/index.vue')['default']
     DynamicIsland: typeof import('./src/components/IPhone/DynamicIsland/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
@@ -23,6 +23,7 @@ declare module 'vue' {
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElOption: typeof import('element-plus/es')['ElOption']
+    ElPageHeader: typeof import('element-plus/es')['ElPageHeader']
     ElProgress: typeof import('element-plus/es')['ElProgress']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
