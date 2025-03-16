@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import danmuData from '@/classes/Danmu/data.js';
-import CDanmu from '@/classes/Danmu/index.js';
+import danmuData from '@/classes/Danmu/data';
+import CDanmu from '@/classes/Danmu';
 
 onMounted(() => {
   const oDanmuCanvas = document.querySelector('.danmu-canvas');
