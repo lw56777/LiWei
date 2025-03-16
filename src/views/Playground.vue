@@ -1,83 +1,55 @@
 <script setup lang="ts">
-import {
-  ref,
-  watchEffect
-} from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const { children } = router.getRoutes().find(r => r.name === 'Playground')!;
-
-const defaultActive = ref('');
-
-watchEffect(() => {
-  defaultActive.value = router.currentRoute.value.fullPath;
-});
+const demos = router.getRoutes().filter(f => f.path.includes('playground/'));
 </script>
 
 <template>
   <div class="playground">
-    <el-scrollbar height="320px">
-      <el-menu
-        :default-active="defaultActive"
-        router
-      >
-        <template
-          v-for="item of children"
-          :key="item.path"
-        >
-          <el-sub-menu
-            v-if="item.children?.length"
-            :index="item.path"
-          >
-            <template #title>
-              <span>{{ item.meta?.title }}</span>
-            </template>
+    <el-card
+      v-for="item of demos"
+      :key="item.path"
+      @click="router.push(item.path)"
+    >
+      <template #header>
+        <div class="card-header">
+          <span>{{ item.meta.title }}</span>
+        </div>
+      </template>
 
-            <el-menu-item
-              v-for="c of item.children"
-              :key="c.name"
-              :index="c.path"
-              
-            >
-              {{ c.meta?.title }}
-            </el-menu-item>
-          </el-sub-menu>
-
-          <el-menu-item
-            v-else
-            :index="item.path"
-          >
-            <span>{{ item.meta?.title }}</span>
-          </el-menu-item>
-        </template>
-      </el-menu>
-    </el-scrollbar>
-
-    <div class="content">
-      <RouterView />
-    </div>
+      <div class="demo-icon">
+        <i :class="`icon-` + item.meta.icon"></i>
+      </div>
+    </el-card>
   </div>
 </template>
 
 <style scoped lang="scss">
 .playground {
-  max-width: 1000px;
-  min-height: calc(100vh - 160px);
-  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
 
-  @include flex() {}
-
-  .el-menu {
-    width: 8rem;
-    border-right: none;
+  .el-card {
+    cursor: pointer;
   }
 
-  .content {
-    width: 22rem;
-    height: 20rem;
-    border: var(--el-border);
-    overflow: hidden;
+  .demo-icon {
+    width: 18rem;
+    height: 12rem;
+
+    @include flex {}
+
+    i {
+      font-size: 3rem;
+    }
   }
+}
+</style>
+
+<style lang="scss">
+.el-card__body {
+  padding: 0;
 }
 </style>

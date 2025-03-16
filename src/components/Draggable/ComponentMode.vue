@@ -67,7 +67,10 @@ const onEnd = () => {
 
 <style scoped lang="scss">
 .component-mode {
-  height: 100%;
+  width: 20rem;
+  height: 20rem;
+  border: var(--el-border);
+  overflow: hidden;
   
   .box {
     grid-template-columns: repeat(3, 1fr);

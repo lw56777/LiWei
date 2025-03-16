@@ -21,7 +21,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div
-    h-full
+    w-full
     pos-relative
   >
     <div
@@ -29,7 +29,6 @@ onBeforeUnmount(() => {
       class="bubble-box"
       opacity-8
       pos-absolute
-      left-0
       bottom-0
     ></div>
   </div>
@@ -62,6 +61,8 @@ onBeforeUnmount(() => {
 .bubble-box {
   background-color: var(--star-color);
   filter: url(#blob);
+  left: 38%;
+  transform: translateX(-50%);
 
   .bubble {
     width: var(--size);

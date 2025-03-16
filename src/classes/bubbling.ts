@@ -2,8 +2,8 @@ import { getRandomInt } from '@/utils/tools';
 
 export default class CBubbling {
   private container: HTMLElement = document.createElement('div');
-  private wW = 350;
-  private wH = 320;
+  private wW = 600;
+  private wH = 600;
   private timer: any = null;
 
   setContainer (container: HTMLElement) {
@@ -29,7 +29,9 @@ export default class CBubbling {
 
       if (len >= 30) {
         const index = getRandomInt(0, len);
-        this.container.removeChild(this.container.children[index]);
+        const node = this.container.children[index];
+
+        node && this.container.removeChild(node);
       }
 
       const bubble = document.createElement('div');

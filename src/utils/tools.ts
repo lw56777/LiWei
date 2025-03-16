@@ -72,3 +72,19 @@ export function isEqualArray (arr1: any[], arr2: any[]) {
 
   return true;
 }
+
+// 获取文本宽度
+export function getTextWidth (content: string, fontSize: number) {
+  const oSpan = document.createElement('span');
+
+  oSpan.innerText = content;
+  oSpan.style.fontSize = fontSize + 'px';
+  oSpan.style.position = 'absolute';
+  document.body.appendChild(oSpan);
+
+  const width = oSpan.offsetWidth;
+
+  document.body.removeChild(oSpan);
+
+  return width;
+}

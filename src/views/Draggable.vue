@@ -5,10 +5,12 @@ import ComponentMode from '@/components/Draggable/ComponentMode.vue';
 </script>
 
 <template>
-  <!-- <el-divider>组件方式</el-divider> -->
-  <ComponentMode />
-  <!-- <el-divider>函数方式</el-divider>
-  <FunctionMode />
-  <el-divider>指令方式</el-divider>
-  <InstructionMode /> -->
+  <div class="demo-draggable">
+    <!-- <el-divider>组件方式</el-divider> -->
+    <ComponentMode />
+    <!-- <el-divider>函数方式</el-divider>
+    <FunctionMode />
+    <el-divider>指令方式</el-divider>
+    <InstructionMode /> -->
+  </div>
 </template>

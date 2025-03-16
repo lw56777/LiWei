@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { provide } from 'vue';
+import {
+  computed,
+  provide
+} from 'vue';
+import { useRouter } from 'vue-router';
 import { useStorage } from '@vueuse/core';
 import { ElConfigProvider } from 'element-plus';
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
@@ -8,6 +12,8 @@ import { getLocalStorage } from '@/utils/tools';
 import Header from '@/components/Header/index.vue';
 import Rainbow from '@/components/Rainbow/index.vue';
 import Background from '@/components/Background/index.vue';
+
+const router = useRouter();
 
 const tipsStyle = {
   // display: 'none',
@@ -46,6 +52,14 @@ const oml2d = loadOml2d({
 provide('oml2d', oml2d);
 
 const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue'));
+
+const notFlexNames = ['Playground'];
+
+const mainClass = computed(() => {
+  const curName = router.currentRoute.value.name as string;
+
+  return notFlexNames.includes(curName) ? '' : 'main-flex';
+});
 </script>
 
 <template>
@@ -56,7 +70,7 @@ const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue
           <Header />
         </el-header>
 
-        <el-main>
+        <el-main :class="mainClass">
           <RouterView v-slot="{ Component }">
             <!-- <Transition
               name="el-fade-in"
@@ -86,6 +100,12 @@ const bgEffectValue = useStorage('bgEffectValue', getLocalStorage('bgEffectValue
 
 .el-main {
   min-height: calc(100vh - 40px);
+
+  &.main-flex {
+    @include flex {
+      flex-wrap: wrap;
+    }
+  }
 }
 
 .el-header,
