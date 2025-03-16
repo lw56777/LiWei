@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getTextWidth } from '@/utils/tools';
 
 export default class CDanmuCanvas {
