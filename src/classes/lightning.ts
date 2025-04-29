@@ -1,7 +1,7 @@
 import { getRandomInt } from '@/utils/tools';
 import { ILightningRoot } from '@/interfaces/lightning';
 
-const effectColor = 'rgba(136, 136, 136, 0.25)';
+const effectColor = 'rgba(136, 136, 136, 0.35)';
 const MIN_COUNT = 20;
 const MAX_COUNT = 2000;
 
@@ -98,7 +98,7 @@ export default class CLightning {
 
   private createRoots () {
     this.roots = [];
-    let maxRootCount = getRandomInt(1, 2);
+    let maxRootCount = getRandomInt(1, 3);
     const points = [...this.points];
     
     while (maxRootCount > 0) {
