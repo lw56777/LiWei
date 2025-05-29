@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import {
   ref,
-  // onMounted
+  onMounted
   // inject
 } from 'vue';
 // import { Oml2dMethods } from 'oh-my-live2d';
 import {
-  // getRandomInt,
+  getRandomInt,
   shuffleArray,
-  // hexToRgba
+  hexToRgba
 } from '@/utils/tools';
 import svgIconFont from '@/utils/svg';
 
@@ -31,47 +31,47 @@ const _skills = shuffleArray(svgIconFont.skill);
 // }
 
 const skillsRef = ref();
-// const createAnimate = () => {
-//   const skillEls = skillsRef.value.children;
+const createAnimate = () => {
+  const skillEls = skillsRef.value.children;
 
-//   _skills.forEach((skill, index) => {
-//     const el = skillEls[index];
-//     const { width } = el.getBoundingClientRect();
-//     const shadowWidth = Math.max(width / 10, 5);
-//     const filterStart = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 0) })`;
-//     const filterEnd = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 1) })`;
+  _skills.forEach((skill, index) => {
+    const el = skillEls[index];
+    const { width } = el.getBoundingClientRect();
+    const shadowWidth = Math.max(width / 10, 5);
+    const filterStart = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 0) })`;
+    const filterEnd = `drop-shadow(2px 2px ${ shadowWidth }px ${ hexToRgba(skill.color, 1) })`;
 
-//     const keyframes = [
-//       {
-//         filter: filterStart,
-//         transform: 'translateY(0) scale(.8)',
-//         opacity: .5
-//       },
-//       {
-//         filter: filterEnd,
-//         transform: 'translateY(-10px) scale(1.2)',
-//         opacity: 1
-//       },
-//       {
-//         filter: filterStart,
-//         transform: 'translateY(0) scale(.8)',
-//         opacity: .5
-//       }
-//     ];
-//     const speed = getRandomInt(6, 9);
-//     const options = {
-//       duration: speed * 1000,
-//       iterations: Infinity,
-//       direction: 'alternate'
-//     };
+    const keyframes = [
+      {
+        filter: filterStart,
+        transform: 'translateY(0) scale(.8)',
+        opacity: .5
+      },
+      {
+        filter: filterEnd,
+        transform: 'translateY(-10px) scale(1.2)',
+        opacity: 1
+      },
+      {
+        filter: filterStart,
+        transform: 'translateY(0) scale(.8)',
+        opacity: .5
+      }
+    ];
+    const speed = getRandomInt(6, 9);
+    const options = {
+      duration: speed * 1000,
+      iterations: Infinity,
+      direction: 'alternate'
+    };
 
-//     el.animate(keyframes, options);
-//   });
-// }
+    el.animate(keyframes, options);
+  });
+}
 
-// onMounted(() => {
-//   createAnimate();
-// });
+onMounted(() => {
+  createAnimate();
+});
 
 // const setTipsMessage = (dataIndex: number) => {
 //   const { message } = _skills[dataIndex];
