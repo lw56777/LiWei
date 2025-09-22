@@ -138,15 +138,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'IPhone',
     component: () => import('@/views/IPhone.vue')
   },
-  {
-    path: '/playground/flow',
-    name: 'Flow',
-    meta: {
-      title: '流程图',
-      icon: 'liuchengtu'
-    },
-    component: () => import('@/views/Flow.vue')
-  }
 ];
 
 const router = createRouter({
