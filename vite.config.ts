@@ -4,6 +4,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { resolve } from 'path';
+import { codeInspectorPlugin } from 'code-inspector-plugin';
 import UnoCSS from 'unocss/vite';
 
 // https://vitejs.dev/config/
@@ -33,6 +34,9 @@ export default defineConfig({
     }),
     Components({
       resolvers: [ElementPlusResolver()]
+    }),
+    codeInspectorPlugin({
+      bundler: 'vite',
     }),
     UnoCSS()
   ]

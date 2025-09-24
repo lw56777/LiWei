@@ -1,25 +1,26 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
-import {
-  Opportunity,
-  Iphone,
-} from '@element-plus/icons-vue';
+import { Opportunity, Iphone, Monitor } from '@element-plus/icons-vue';
 // import Signature from './Signature.vue';
 import Setting from './Setting.vue';
 import Theme from './Theme.vue';
-import avatar from '@/assets/avatar.jpg';
+import avatar1 from '@/assets/567_1.jpg';
+import avatar2 from '@/assets/567_2.jpg';
 
 const router = useRouter();
+
+const avatar = computed(() => {
+  return Math.random() > 0.5 ? avatar1 : avatar2;
+});
+
+const toAdmin = () => {
+  window.open('https://github.com/lw56777/Bricklayer-Admin', '_blank');
+};
 </script>
 
 <template>
-  <div
-    class="header"
-    flex
-    items-center
-    justify-between
-    h-full
-  >
+  <div class="header" flex items-center justify-between h-full>
     <div class="logo">
       <!-- <Signature /> -->
       <el-avatar
@@ -31,22 +32,27 @@ const router = useRouter();
       />
     </div>
 
-    <ul
-      class="menu"
-      flex
-      items-center
-      justify-end
-    >
+    <ul class="menu" flex items-center justify-end>
       <li>
-        <el-icon @click="router.push({ name: 'IPhone' })">
-          <Iphone />
-        </el-icon>
+        <el-tooltip effect="dark" content="Bricklayer Admin" placement="bottom">
+          <el-icon @click="toAdmin"><Monitor /></el-icon>
+        </el-tooltip>
       </li>
 
       <li>
-        <el-icon @click="router.push({ name: 'Playground' })">
-          <Opportunity />
-        </el-icon>
+        <el-tooltip effect="dark" content="IPhone" placement="bottom">
+          <el-icon @click="router.push({ name: 'IPhone' })">
+            <Iphone />
+          </el-icon>
+        </el-tooltip>
+      </li>
+
+      <li>
+        <el-tooltip effect="dark" content="Playground" placement="bottom">
+          <el-icon @click="router.push({ name: 'Playground' })">
+            <Opportunity />
+          </el-icon>
+        </el-tooltip>
       </li>
 
       <li>
@@ -71,7 +77,7 @@ const router = useRouter();
   .menu {
     li {
       cursor: pointer;
-      padding: 0 .5rem;
+      padding: 0 0.5rem;
     }
   }
 }
