@@ -10,7 +10,7 @@ import Skill from '@/components/Skill/index.vue';
       </div>
 
       <section class="basic-info">
-        <el-space :size="20" wrap>
+        <el-space :size="20">
           <el-text type="info">厉威</el-text>
           <el-text type="info">男</el-text>
           <el-text type="info">15058665004</el-text>
