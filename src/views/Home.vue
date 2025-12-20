@@ -4,25 +4,13 @@ import Skill from '@/components/Skill/index.vue';
 
 <template>
   <div class="home">
-    <div
-      class="info-box"
-      max-w-200
-      min-h-125
-      pos-relative
-    >
-      <div
-        class="title"
-        font-size-8
-        text-center
-      >
+    <div class="info-box" max-w-200 min-h-125 pos-relative>
+      <div class="title" font-size-8 text-center>
         <span>Hello World</span>
       </div>
 
       <section class="basic-info">
-        <el-space
-          :size="20"
-          wrap
-        >
+        <el-space :size="20" wrap>
           <el-text type="info">厉威</el-text>
           <el-text type="info">男</el-text>
           <el-text type="info">15058665004</el-text>
@@ -84,21 +72,21 @@ import Skill from '@/components/Skill/index.vue';
 
 <style lang="scss">
 .home {
- .info-box {
-  .el-progress-bar__outer {
-    background-color: transparent;
-  }
-
-  .el-descriptions {
-    .el-descriptions__label {
-      width: 15%;
-      opacity: .7;
+  .info-box {
+    .el-progress-bar__outer {
+      background-color: transparent;
     }
 
-    .el-descriptions__content {
-      width: 35%;
+    .el-descriptions {
+      .el-descriptions__label {
+        width: 15%;
+        opacity: 0.7;
+      }
+
+      .el-descriptions__content {
+        width: 35%;
+      }
     }
   }
- }
 }
 </style>

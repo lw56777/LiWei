@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useDark } from '@vueuse/core';
-import {
-  Sunrise,
-  MoonNight
-} from '@element-plus/icons-vue';
+import { Sunrise, MoonNight } from '@element-plus/icons-vue';
 
 const isDark = useDark({ disableTransition: false });
 const color = '#2c2c2c';
@@ -15,16 +12,16 @@ const themeToggle = (e: MouseEvent) => {
     isDark.value = !isDark.value;
     return;
   }
-  
+
   const x = e.clientX;
   const y = e.clientY;
   const radius = Math.hypot(
     Math.max(x, window.innerWidth - x),
-    Math.max(y, window.innerHeight - y)
+    Math.max(y, window.innerHeight - y),
   );
   const cliPatch = [
-    `circle(0% at ${ x }px ${ y }px)`,
-    `circle(${ radius }px at ${ x }px ${ y }px)`,
+    `circle(0% at ${x}px ${y}px)`,
+    `circle(${radius}px at ${x}px ${y}px)`,
   ];
   // @ts-ignore
   const transition = document.startViewTransition(() => {
@@ -34,22 +31,25 @@ const themeToggle = (e: MouseEvent) => {
   transition.ready.then(() => {
     document.documentElement.animate(
       {
-        clipPath: isDark.value ? cliPatch.reverse() : cliPatch
+        clipPath: isDark.value ? cliPatch.reverse() : cliPatch,
       },
       {
-        pseudoElement: isDark.value ? '::view-transition-old(root)' : '::view-transition-new(root)',
-        duration: 500
-      }
+        pseudoElement: isDark.value
+          ? '::view-transition-old(root)'
+          : '::view-transition-new(root)',
+        duration: 500,
+        fill: 'forwards',
+      },
     );
   });
-}
+};
 </script>
 
 <template>
   <div class="theme">
     <el-switch
       :modelValue="isDark"
-      :style="`--el-switch-on-color: ${ color };`"
+      :style="`--el-switch-on-color: ${color};`"
       @click="themeToggle($event)"
     >
       <template #active-action>
