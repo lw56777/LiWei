@@ -35,9 +35,9 @@ interface RingDef {
 // 由内向外：圈越大，点越多、越大
 const rings: RingDef[] = [
   { radius: 230, count: 24, size: 10 },
-  { radius: 280, count: 30, size: 12 },
-  { radius: 330, count: 36, size: 14 },
-  { radius: 380, count: 42, size: 16 },
+  { radius: 262, count: 28, size: 12 },
+  { radius: 294, count: 32, size: 14 },
+  { radius: 326, count: 36, size: 16 },
 ];
 
 interface DotMeta {
@@ -220,14 +220,14 @@ onUnmounted(() => {
 .skill-galaxy {
   position: relative;
   width: 100%;
-  height: 840px;
+  height: 740px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @include resLayout('Phone') {
     height: 520px;
-    transform: scale(0.48);
+    transform: scale(0.56);
     transform-origin: center;
   }
 }
