@@ -5,31 +5,25 @@ import Skill from '@/components/Skill/index.vue';
 <template>
   <div class="home">
     <div class="info-box" max-w-200 min-h-125 pos-relative>
-      <div class="title" font-size-8 text-center>
-        <span>Hello World</span>
-      </div>
+      <Skill>
+        <div class="hero-card">
+          <div class="title">
+            <span>Hello World</span>
+          </div>
 
-      <section class="basic-info">
-        <el-space :size="20">
-          <el-text type="info">厉威</el-text>
-          <el-text type="info">男</el-text>
-          <el-text type="info">15058665004</el-text>
-          <el-text type="info">535847787@qq.com</el-text>
-        </el-space>
-
-        <el-progress
-          :stroke-width="1"
-          color="rgba(136, 136, 136, 0.25)"
-          :show-text="false"
-          :percentage="100"
-          indeterminate
-          :duration="5"
-        />
-      </section>
-
-      <section>
-        <Skill />
-      </section>
+          <div class="meta">
+            <div class="meta-row">
+              <span>厉威</span>
+              <i class="sep" />
+              <span>男</span>
+              <i class="sep" />
+              <span>浙江</span>
+            </div>
+            <div class="meta-row">15058665004</div>
+            <div class="meta-row">535847787@qq.com</div>
+          </div>
+        </div>
+      </Skill>
     </div>
   </div>
 </template>
@@ -38,27 +32,53 @@ import Skill from '@/components/Skill/index.vue';
 .home {
   .info-box {
     margin: auto;
+  }
+}
 
-    .title {
-      background: var(--rainbow-bg);
-      background-size: 200% 200%;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbowBg 30s infinite;
+.hero-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
 
-      span {
-        letter-spacing: -15px;
-        animation: expansion 3s forwards;
-      }
+  .title {
+    font-size: 2.6rem;
+    line-height: 1.1;
+    background: var(--rainbow-bg);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbowBg 30s infinite;
+
+    span {
+      letter-spacing: -15px;
+      animation: expansion 3s forwards;
+    }
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    opacity: 0.55;
+    letter-spacing: 0.04em;
+
+    .meta-row {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
     }
 
-    section {
-      margin-top: 4rem;
-    }
-
-    .basic-info {
-      max-width: max-content;
-      margin-left: 1rem;
+    .sep {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.6;
     }
   }
 }
@@ -66,27 +86,6 @@ import Skill from '@/components/Skill/index.vue';
 @keyframes expansion {
   to {
     letter-spacing: 0;
-  }
-}
-</style>
-
-<style lang="scss">
-.home {
-  .info-box {
-    .el-progress-bar__outer {
-      background-color: transparent;
-    }
-
-    .el-descriptions {
-      .el-descriptions__label {
-        width: 15%;
-        opacity: 0.7;
-      }
-
-      .el-descriptions__content {
-        width: 35%;
-      }
-    }
   }
 }
 </style>
