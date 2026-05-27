@@ -177,7 +177,12 @@ onMounted(() => {
 
   if (skillDotIndices.length > 0) {
     cycleTimer = setInterval(() => {
-      activeIndex.value = (activeIndex.value + 1) % skillDotIndices.length;
+      if (skillDotIndices.length === 1) return;
+      let next = activeIndex.value;
+      while (next === activeIndex.value) {
+        next = Math.floor(Math.random() * skillDotIndices.length);
+      }
+      activeIndex.value = next;
     }, 2200);
   }
 });
