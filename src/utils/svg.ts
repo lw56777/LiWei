@@ -1,6 +1,12 @@
 const skillNumber = '4758532';
 const appNumber = '4754901';
-const svgIconFont = {
+
+interface IconFont {
+  name?: string;
+  color?: string;
+}
+
+const svgIconFont: { skill: IconFont[]; app: IconFont[] } = {
   skill: [],
   app: []
 };
@@ -25,12 +31,12 @@ function matchIconfont (svg: any) {
   return iconfont?.map((item: string) => {
     const name = item.match(/<symbol id="icon-(.*?)"/)?.[1];
     const color = item.match(/fill="(.*?)"/)?.[1];
-  
+
     return {
       name,
       color
     }
-  });
+  }) ?? [];
 }
 
 export default svgIconFont;

@@ -3,7 +3,8 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { shuffleArray } from '@/utils/tools';
 import svgIconFont from '@/utils/svg';
 
-const skills = shuffleArray(svgIconFont.skill);
+// 保持技能原始顺序，展示时按此顺序轮播
+const skills = svgIconFont.skill;
 
 // 四方位锚色：顶/右/下/左 — 粉/紫/蓝/橘
 const colorAnchors: [number, number, number][] = [
@@ -50,9 +51,8 @@ interface DotMeta {
 }
 
 const dots: DotMeta[] = [];
-const dotIndexByRing: number[][] = rings.map(() => []);
 
-rings.forEach((ring, ringIdx) => {
+rings.forEach((ring) => {
   const angleStep = 360 / ring.count;
 
   for (let i = 0; i < ring.count; i++) {
@@ -61,7 +61,6 @@ rings.forEach((ring, ringIdx) => {
     const radius = ring.radius + (Math.random() - 0.5) * 18;
     const size = Math.max(6, ring.size + (Math.random() - 0.5) * 6);
 
-    dotIndexByRing[ringIdx].push(dots.length);
     dots.push({
       baseAngle: angle,
       radius,
@@ -73,34 +72,20 @@ rings.forEach((ring, ringIdx) => {
   }
 });
 
-// 按角度均匀地把技能图标分布到各圈：技能 i 落在第 (i % 圈数) 圈上离目标角最近的可用点
-const usedDotIndices = new Set<number>();
+// 把技能随机散落到各个圆点上：随机打乱所有点位，依次取出分配给技能
+const shuffledDotIndices = shuffleArray(dots.map((_, i) => i));
+const usedDotIndices: number[] = [];
 skills.forEach((skill, i) => {
-  const desiredAngle = (360 / skills.length) * i;
-  const ringIdx = i % rings.length;
-
-  let bestIdx = -1;
-  let bestDiff = Infinity;
-  for (const dotIdx of dotIndexByRing[ringIdx]) {
-    if (usedDotIndices.has(dotIdx)) continue;
-    const diff = Math.abs(
-      (((dots[dotIdx].baseAngle - desiredAngle) % 360) + 540) % 360 - 180
-    );
-    if (diff < bestDiff) {
-      bestDiff = diff;
-      bestIdx = dotIdx;
-    }
-  }
-
-  if (bestIdx >= 0) {
-    dots[bestIdx].skill = skill;
-    usedDotIndices.add(bestIdx);
-  }
+  const dotIdx = shuffledDotIndices[i];
+  if (dotIdx === undefined) return;
+  dots[dotIdx].skill = skill;
+  usedDotIndices.push(dotIdx);
 });
 
-const skillDotIndices = dots
-  .map((d, i) => (d.skill ? i : -1))
-  .filter((i) => i >= 0);
+// 轮播按角度顺时针推进：baseAngle 递增即为「上 → 右 → 下 → 左」的顺时针方向
+const skillDotIndices = usedDotIndices.sort(
+  (a, b) => dots[a].baseAngle - dots[b].baseAngle
+);
 
 const activeIndex = ref(0);
 const canvasRef = ref<HTMLElement>();
@@ -178,11 +163,8 @@ onMounted(() => {
   if (skillDotIndices.length > 0) {
     cycleTimer = setInterval(() => {
       if (skillDotIndices.length === 1) return;
-      let next = activeIndex.value;
-      while (next === activeIndex.value) {
-        next = Math.floor(Math.random() * skillDotIndices.length);
-      }
-      activeIndex.value = next;
+      // 按技能原始顺序依次轮播展示
+      activeIndex.value = (activeIndex.value + 1) % skillDotIndices.length;
     }, 2200);
   }
 });
