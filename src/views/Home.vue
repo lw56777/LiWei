@@ -20,7 +20,7 @@ import Skill from '@/components/Skill/index.vue';
               <span>浙江</span>
             </div>
             <div class="meta-row">15058665004</div>
-            <div class="meta-row">535847787@qq.com</div>
+            <div class="meta-row">liwei15058665004@163.com</div>
           </div>
         </div>
       </Skill>
