@@ -2,7 +2,7 @@
 import { getTextWidth } from '@/utils/tools';
 
 export default class CDanmuCanvas {
-  constructor (els, data, options) {
+  constructor(els, data, options) {
     const {
       canvas,
       video,
@@ -16,54 +16,73 @@ export default class CDanmuCanvas {
     }
 
     this.canvasCtx = canvas.getContext('2d');
-    this.canvas.width = video.offsetWidth;
-    this.canvas.height = video.offsetHeight;
     this.isPause = true;
     this.bindEvent();
+    this.initCanvasSize();
     this.initData(data, options);
   }
 
-  bindEvent () {
+  initCanvasSize() {
+    this.canvas.width = this.video.offsetWidth;
+    this.canvas.height = this.video.offsetHeight;
+  }
+
+  bindEvent() {
     this.video.addEventListener('play', this.playVideo.bind(this), false);
     this.video.addEventListener('pause', this.pauseVideo.bind(this), false);
     this.video.addEventListener('seeked', this.seekedVideo.bind(this), false);
+    this.video.addEventListener(
+      'loadedmetadata',
+      this.initCanvasSize.bind(this),
+      false,
+    );
     this.danmuBtn.addEventListener('click', this.sendDanmu.bind(this), false);
+    this.danmuInput.addEventListener(
+      'keydown',
+      e => {
+        if (e.key === 'Enter') this.sendDanmu();
+      },
+      false,
+    );
   }
 
   // 初始化弹幕数据
-  initData (data, options) {
+  initData(data, options) {
     this.data = data.map(item => this.createDanmu(item, options));
   }
 
-  createDanmu (dm, options = {}) {
+  createDanmu(dm, options = {}) {
     return new CDanmu(
       this,
       dm,
-      Object.assign({
-        fontSize: 20,
-        color: '#FFF',
-        speed: 1
-      }, options)
-    )
+      Object.assign(
+        {
+          fontSize: 20,
+          color: '#FFF',
+          speed: 1,
+        },
+        options,
+      ),
+    );
   }
 
   // 播放视频
-  playVideo () {
+  playVideo() {
     this.isPause = false;
     this.playDanmu();
   }
 
   // 暂停视频
-  pauseVideo () {
+  pauseVideo() {
     this.isPause = true;
   }
 
   // 拖动视频进度条
-  seekedVideo () {
+  seekedVideo() {
     this.resetDanmu();
   }
 
-  playDanmu () {
+  playDanmu() {
     this.clearCanvas();
     this.drawDanmu();
 
@@ -74,7 +93,7 @@ export default class CDanmuCanvas {
   }
 
   // 绘制弹幕
-  drawDanmu () {
+  drawDanmu() {
     const videoCurrentTime = this.video.currentTime;
 
     this.data.forEach(item => {
@@ -87,7 +106,7 @@ export default class CDanmuCanvas {
         } else {
           item.X -= item.speed;
         }
-        
+
         item.draw();
 
         // 判断该弹幕是否超出了视频范围
@@ -99,7 +118,7 @@ export default class CDanmuCanvas {
   }
 
   // 重置弹幕
-  resetDanmu () {
+  resetDanmu() {
     this.clearCanvas();
 
     const videoCurrentTime = this.video.currentTime;
@@ -117,32 +136,32 @@ export default class CDanmuCanvas {
   }
 
   // 清空画布
-  clearCanvas () {
+  clearCanvas() {
     this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
-  
+
   // 发送弹幕
-  sendDanmu () {
+  sendDanmu() {
     const content = this.danmuInput.value;
 
     if (!content) return;
 
-    this.data.push(this.createDanmu(
-      {
+    this.data.push(
+      this.createDanmu({
         content,
         fontSize: Math.trunc(Math.random() * 50) + 1,
         color: this.danmuColor.value,
         runTime: this.video.currentTime,
-        speed: Math.trunc(Math.random() * 10) + 1
-      }
-    ));
+        speed: Math.trunc(Math.random() * 10) + 1,
+      }),
+    );
 
     this.danmuInput.value = '';
   }
 }
 
 class CDanmu {
-  constructor (dmCtx, dm, options) {
+  constructor(dmCtx, dm, options) {
     this.dmCtx = dmCtx;
     this.dm = dm;
     this.options = options;
@@ -151,20 +170,14 @@ class CDanmu {
   }
 
   // 初始化弹幕
-  init () {
-    const {
-      dm,
-      options
-    } = this;
+  init() {
+    const { dm, options } = this;
 
-    for (const key in {...dm, ...options}) {
+    for (const key in { ...dm, ...options }) {
       this[key] = dm[key] !== undefined ? dm[key] : options[key];
     }
 
-    const {
-      width,
-      height
-    } = this.dmCtx.canvas;
+    const { width, height } = this.dmCtx.canvas;
 
     this.X = width;
 
@@ -179,8 +192,8 @@ class CDanmu {
     this.Y = Y;
   }
 
-  draw () {
-    this.dmCtx.canvasCtx.font = `${ this.fontSize }px 微软雅黑`;
+  draw() {
+    this.dmCtx.canvasCtx.font = `${this.fontSize}px 微软雅黑`;
     this.dmCtx.canvasCtx.fillStyle = this.color;
     this.dmCtx.canvasCtx.fillText(this.content, this.X, this.Y);
   }

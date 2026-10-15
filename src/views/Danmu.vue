@@ -16,13 +16,13 @@ onMounted(() => {
       video: oDanmuVideo,
       danmuInput: oDanmuInput,
       danmuBtn: oDanmuBtn,
-      danmuColor: oDanmuColor
+      danmuColor: oDanmuColor,
     },
     danmuData,
     {
       fontSize: 50,
-      color: 'green'
-    }
+      color: 'green',
+    },
   );
 });
 </script>
@@ -35,22 +35,16 @@ onMounted(() => {
         class="danmu-video"
         src="../vedio/红豆-方大同.mp4"
         controls
+        muted
       ></video>
     </div>
 
     <div class="tool-box">
-      <input
-        class="danmu-input"
-        type="text"
-        placeholder="输入内容"
-      />
+      <input class="danmu-input" type="text" placeholder="输入内容" />
 
       <button class="danmu-btn">发送弹幕</button>
 
-      <input
-        class="danmu-color"
-        type="color"
-      />
+      <input class="danmu-color" type="color" />
     </div>
   </div>
 </template>
@@ -67,6 +61,7 @@ onMounted(() => {
   position: absolute;
   top: 0;
   left: 0;
+  pointer-events: none;
 }
 
 .tool-box {
